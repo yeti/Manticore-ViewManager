@@ -1,0 +1,14 @@
+PODS:
+  - MCViewManager (0.1.0)
+
+DEPENDENCIES:
+  - MCViewManager (from `../`)
+
+EXTERNAL SOURCES:
+  MCViewManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MCViewManager: 5fe981076dade47dc10b93e3186103539620f8ee
+
+COCOAPODS: 0.33.1

@@ -1,0 +1,5 @@
+#include "Pods-MCViewManager.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/MCViewManager" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/MCViewManager"
+OTHER_LDFLAGS = -ObjC ${PODS_MCVIEWMANAGER_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
