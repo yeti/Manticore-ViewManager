@@ -1,1 +1,1 @@
-../../../../Classes/MCViewManager.h
+../../../../Pod/Classes/MCViewManager.h

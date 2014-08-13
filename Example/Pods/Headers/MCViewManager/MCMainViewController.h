@@ -1,1 +1,1 @@
-../../../../Classes/MCMainViewController.h
+../../../../Pod/Classes/MCMainViewController.h

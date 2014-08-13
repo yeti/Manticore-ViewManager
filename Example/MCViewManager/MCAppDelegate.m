@@ -8,6 +8,7 @@
 
 #import "MCAppDelegate.h"
 
+
 @implementation MCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -15,6 +16,19 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    // You have to initialize MCMainViewController or a custom sub-class :
+    
+    // 1.
+    // 1.1. If you don't want a custom sub-class, use the built-in MainViewController.
+    UIViewController* mainVC = [[MCViewManager sharedManager] createViewController:VIEW_BUILTIN_MAIN];
+    // 1.2. Then usual : assign it as rootVC to the window and set the frame
+    [self.window setRootViewController:mainVC];
+    [mainVC.view setFrame:[[UIScreen mainScreen] bounds]];
+    // 1.3. Because you did not sub-class 
+    
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

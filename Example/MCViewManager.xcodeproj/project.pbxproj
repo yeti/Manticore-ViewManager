@@ -21,6 +21,9 @@
 		F684BCCA199C130E00DD4B36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684BCB2199C130E00DD4B36 /* UIKit.framework */; };
 		F684BCD2199C130E00DD4B36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F684BCD0199C130E00DD4B36 /* InfoPlist.strings */; };
 		F684BCDE199C154400DD4B36 /* MCViewManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F684BCDD199C154400DD4B36 /* MCViewManagerTests.m */; };
+		F684BCE3199C1CBB00DD4B36 /* MCMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F684BCE1199C1CBB00DD4B36 /* MCMainVC.m */; };
+		F684BCE4199C1CBB00DD4B36 /* MCMainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F684BCE2199C1CBB00DD4B36 /* MCMainVC.xib */; };
+		F684BCE7199C1D9400DD4B36 /* MCAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F684BCE6199C1D9400DD4B36 /* MCAppModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,11 @@
 		F684BCCF199C130E00DD4B36 /* MCViewManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MCViewManagerTests-Info.plist"; sourceTree = "<group>"; };
 		F684BCD1199C130E00DD4B36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F684BCDD199C154400DD4B36 /* MCViewManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCViewManagerTests.m; sourceTree = "<group>"; };
+		F684BCE0199C1CBB00DD4B36 /* MCMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCMainVC.h; path = ViewControllers/MCMainVC.h; sourceTree = "<group>"; };
+		F684BCE1199C1CBB00DD4B36 /* MCMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCMainVC.m; path = ViewControllers/MCMainVC.m; sourceTree = "<group>"; };
+		F684BCE2199C1CBB00DD4B36 /* MCMainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCMainVC.xib; path = ViewControllers/MCMainVC.xib; sourceTree = "<group>"; };
+		F684BCE5199C1D9400DD4B36 /* MCAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCAppModel.h; sourceTree = "<group>"; };
+		F684BCE6199C1D9400DD4B36 /* MCAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCAppModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +125,9 @@
 			children = (
 				F684BCBD199C130E00DD4B36 /* MCAppDelegate.h */,
 				F684BCBE199C130E00DD4B36 /* MCAppDelegate.m */,
+				F684BCE5199C1D9400DD4B36 /* MCAppModel.h */,
+				F684BCE6199C1D9400DD4B36 /* MCAppModel.m */,
+				F684BCDF199C1C8600DD4B36 /* ViewControllers */,
 				F684BCC0199C130E00DD4B36 /* Images.xcassets */,
 				F684BCB5199C130E00DD4B36 /* Supporting Files */,
 			);
@@ -150,6 +161,16 @@
 				F684BCD0199C130E00DD4B36 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F684BCDF199C1C8600DD4B36 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F684BCE0199C1CBB00DD4B36 /* MCMainVC.h */,
+				F684BCE1199C1CBB00DD4B36 /* MCMainVC.m */,
+				F684BCE2199C1CBB00DD4B36 /* MCMainVC.xib */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +255,7 @@
 			files = (
 				F684BCB9199C130E00DD4B36 /* InfoPlist.strings in Resources */,
 				F684BCC1199C130E00DD4B36 /* Images.xcassets in Resources */,
+				F684BCE4199C1CBB00DD4B36 /* MCMainVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +338,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F684BCBF199C130E00DD4B36 /* MCAppDelegate.m in Sources */,
+				F684BCE7199C1D9400DD4B36 /* MCAppModel.m in Sources */,
 				F684BCBB199C130E00DD4B36 /* main.m in Sources */,
+				F684BCE3199C1CBB00DD4B36 /* MCMainVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

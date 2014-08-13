@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MCViewManager"
-  s.version          = "0.1.0"
+  s.version          = "1.0.0"
   s.summary          = "MCViewManager is a view controller manager for iOS applications."
   s.description      = <<-DESC
                        MCViewManager is inspired by the Android Activity Lifecycle.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.requires_arc = true
 
-  s.source_files = 'Classes/**/*.{h,m}'
+  s.source_files = 'Pod/Classes/**/*.{h,m}'
 
   s.frameworks = 'QuartzCore', 'AVFoundation', 'UIKit', 'Foundation'
 end

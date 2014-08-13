@@ -8,7 +8,7 @@
 
 // MCViewManager
 #define COCOAPODS_POD_AVAILABLE_MCViewManager
-#define COCOAPODS_VERSION_MAJOR_MCViewManager 0
-#define COCOAPODS_VERSION_MINOR_MCViewManager 1
+#define COCOAPODS_VERSION_MAJOR_MCViewManager 1
+#define COCOAPODS_VERSION_MINOR_MCViewManager 0
 #define COCOAPODS_VERSION_PATCH_MCViewManager 0
 

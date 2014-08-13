@@ -1,1 +1,1 @@
-../../../../Classes/ManticoreViewManager.h
+../../../../Pod/Classes/ManticoreViewManager.h
