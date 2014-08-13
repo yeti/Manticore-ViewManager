@@ -24,7 +24,8 @@ DerivedData/
 # Bundler
 .bundle
 
-Example/
-Example/Pods/
-Example/MCViewManager.xcworkspace/
+
+Example/Pods/**
+Example/*.xcworkspace
+
 

@@ -21,7 +21,7 @@
     
     // 1.
     // 1.1. If you don't want a custom sub-class, use the built-in MainViewController.
-    UIViewController* mainVC = [[MCViewManager sharedManager] createViewController:VIEW_BUILTIN_MAIN];
+    UIViewController* mainVC = [[MCViewManager sharedManager] createViewController:VIEW_MAIN];
     // 1.2. Then usual : assign it as rootVC to the window and set the frame
     [self.window setRootViewController:mainVC];
     [mainVC.view setFrame:[[UIScreen mainScreen] bounds]];
