@@ -1,1 +1,0 @@
-PODS_MCVIEWMANAGER_OTHER_LDFLAGS = -framework AVFoundation -framework Foundation -framework QuartzCore -framework UIKit
