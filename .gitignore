@@ -1,7 +1,6 @@
 # OS X
 .DS_Store
 *.swp
-*.lock
 profile
 
 # Xcode
@@ -25,5 +24,7 @@ DerivedData/
 # Bundler
 .bundle
 
+Example/
 Example/Pods/
+Example/MCViewManager.xcworkspace/
 
