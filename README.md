@@ -27,6 +27,9 @@ Here is a schema that shows Manticore View Manager's main functionality. What's 
 ![Schema](https://github.com/YetiHQ/MCViewManager/blob/master/Documentation/Activities_Logic.png "Intents And Activities")
 
 
+
+
+
 ##Installation
 
 
@@ -42,6 +45,11 @@ If you wish to install the Example project, clone or download MCViewManager in y
 
 
 
+
+  
+  
+  
+
 ##Features
 
 Features included with this release:
@@ -54,20 +62,26 @@ Features included with this release:
 
 
 
+
+
+
+
+
 ##Getting started : basic usage
 
 
-###### Import Manticore
-Wherever you are using Manticore, importing `ManticoreViewFactory.h` will provide your file with all the necessary classes. 
+#### Import Manticore
+
+Importing `ManticoreViewFactory.h` will provide everything needed.
 
 ```objc
 #import <ManticoreViewManager.h>
 ```
 
 
-###### Create your View-Controllers : Sub-class *MCSectionViewController* or *MCViewController*
+#### Create your Views
 
-We will create one section with two views. Section have to sub-class *MCSectionViewController* and views have to sub-class *MCViewController*. Create these classes with their .xib (nib) associated.
+Let's create a simple application, composed of two Views in a Section. Sections have to sub-class *MCSectionViewController* and Views have to sub-class *MCViewController*. Create these classes with their associated .xib (nib). For now, think of a Section as a container for Views that are related.
 
 ```objc
 // Section1VC.h 
@@ -85,37 +99,52 @@ We will create one section with two views. Section have to sub-class *MCSectionV
 // And so on...
 ```
 
+>When creating a Section (sub-class MCSectionViewController), you have to create a UIView that will hold the Section's Views. For now, make the UIView the size of the Screen. You then have to connect this UIView to the `innerView` attribute of the superclass (see gif).
 
-###### Initialize
-Assign Manticore's MainViewController to your application's window. We suggest doing this initialization process somewhere in `application:didFinishLaunchingWithOptions:` :
+![Schema](https://github.com/YetiHQ/MCViewManager/blob/master/Documentation/SectionsAddInnerView.gif "Section connect innerView")
+
+#### Initialize
+Create Manticore's MainViewController and add it to your application's window. We suggest doing this initialization process somewhere in `application:didFinishLaunchingWithOptions:` :
 
 
 ```objc
-UIViewController* mainVC = [[MCViewFactory sharedFactory] createViewController:VIEW_BUILTIN_MAIN];
+// You can use the "createViewController" method provided by Manticore to create the mainViewController
+UIViewController* mainVC = [[MCViewManager sharedFactory] createViewController:VIEW_BUILTIN_MAIN];
 [self.window setRootViewController:mainVC];
 [mainVC.view setFrame:[[UIScreen mainScreen] bounds]];
 ```
 
 
-###### Start showing your first section and view
-Still in "application:didFinishLaunchingWithOptions:"
+#### Make an intent to create an Activity
+
+Create an Activity (or more...) for each of your Views : make an Intent then process it.
     
 ```objc
-// Make an intent
-MCIntent* intent = [MCIntent intentWithSectionName:@"Section1VC" andViewName:@"View1VC];
+// Make the intent 
+MCIntent* intent = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View1VC" inSectionNamed:@"Section1VC"];
 
-// Process the intent when you are ready to switch to the next view-controller
+// Process the intent to create the Activity and show its associated View
 [[MCViewModel sharedModel] processIntent:intent];
 ```
 
--------------
+
+
+-------------------------------------------
 
 
 ##Sections and Views
 
-#####Understanding the concept
+>Once again, it's important to note that manticore refers to `View-Controllers` as `Views` or `Sections`
 
-When developping an application you will usually want to group the View-Controllers. As an example, if you were to develop a social app, you could want to group the VCs into these :
+####Understanding the concept
+
+When developping an application, you will usually want to group the Views into Sections. If you are developing a regular application, try to group views that you feel are connected in a way, that would often navigate between each others. If you are developping a tabbed application, each tab will have it's own Section.   
+Think as Sections as "containers" for related Views.
+
+It is in no way a mandatory thing to have Views inside Sections, it is only a better design.    
+If you feel a View-Controller could not be linked to any other, then create a Section with no Views.
+
+As an example, if you were to develop a social app, you could want to group the Views like this :
 
 * Logins : all the VCs related to the login process (welcome vc, login vc, reset-password vc...)
 * Profile : all the VCs related to managing the user's profile
@@ -123,25 +152,19 @@ When developping an application you will usually want to group the View-Controll
 * and so on ...
 
 The **Sections** would here be `Logins` `Profile` `Feeds`.    
-The **Views** would be all the VCs inside these groups( -> sections).   
+The **Views** would be all the ViewControllers inside these Sections.   
     
-Sections can be seen as a way of organizing your application's views (or as tabs in a tabbed application).
-Both are sub-classes of `UIViewController`.
 
+Both Views and Sections are sub-classes of `UIViewController`.
 
-##### Using a tabbed application
-
-**Sections** should correspond to user interface's tabs and **views** should correspond to the views inside a tab.
 
 Sections can also be shown without views in order to create single-level hierarchy,
 but it's a better design to create one section with multiple views.
 
-NOTE: I haven't tested a single-level hierarchy with all sections and no views.
 
 
 
-
-##### Stay organized !
+#### Staying organized
 
 We highly suggest making macros for all your sections and views' names. You can do so in the appModel class if you have one, or in a separate header file.  
 This way, it will help to avoid making mistakes when making intents on these View-Controllers. Plus, if you ever rename a class, you only have to change the name on the macro instead of multiple times. Most of all... auto-completion is always nice ;)
@@ -168,7 +191,7 @@ MCIntent* intent = [MCIntent intentWithSectionName:SECTION_FIRST andViewName:VIE
 
 
 
-##Intents
+##Intents and activities
 
 
 ###Making an intent
