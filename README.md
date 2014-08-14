@@ -1,22 +1,30 @@
-#Welcome to Manticore iOS View Manager
+#Welcome to Manticore MCViewManager
+
+
+
+**MCViewManager** is here to fight against the complexity of managing View-Controllers in iOS. It will help you concentrate on the making of your View-Controllers and will take care of their management for you.    
+
+It's extremely difficult to deal with a history stack of View-Controllers that contains multiple times the same View-Controller but with different Data associated with it.      
+With MCViewManager, this problem is gone.
+
+Plus, thanks to its internal structure, MCViewManager will help you manage your tabbed applications without any more constraints than any other application !!
 
 
 
 ##Overview
 
-**Manticore-iosviewmanager** is a ViewController Management pattern for all iOS apps. It aims at making the creation of iOS applications easier, by not having to care about the View-Controllers' management.      
+Inspired from the [Android activity lifecycle](http://developer.android.com/training/basics/activity-lifecycle/pausing.html), Manticore's main power comes from the use of **Activities** to manage the View-Controllers and their associated Data.
 
-**manticore-iosviewmanager** will help in the making of any type of application although its two-level hierarchical view controller structure design is ideal for creating tabbed applications.      
+> It's important to note that manticore refers to `View-Controllers` as `Views` (or `Sections`)
+
+Here is a schema that shows Manticore View Manager's main functionality. What's important to see is : 
+
+  1. You make an intent (MCIntent methods) to create an Activity or to go to a specific one in the activity stack.
+  2. You process the intent, Manticore deals with the stack of activities and makes the intent become an Activity
+  3. `MCMainViewController` automatically loads the View corresponding to the Activity. Provided methods similar to `viewDidLoad` or `viewDidAppear` allow the View to retrieve the Data associated with the Activity.
 
 
-**Manticore-iosviewmanager** was inspired by the [Android activity lifecycle](http://developer.android.com/training/basics/activity-lifecycle/pausing.html).
-
-
-**Simplicity is key :**
-
-1. Make an intent to create a VC,to go to a specific VC, to pop the last 3 VCs... possibilities are endless.
-2. Process the intent with the help of a unique method.
-3. Relax and let manticore do the hard work of managing the View-Controllers for you !
+![Schema](https://github.com/YetiHQ/MCViewManager/blob/master/Documentation/Activities_Logic.png "Intents And Activities")
 
 
 ##Installation
@@ -27,8 +35,12 @@ Installation using CocoaPods is really easy. Add this line to your Podfile then 
     pod 'MCViewManager', :git => 'https://github.com/YetiHQ/MCViewManager'
 
 
-If you do not wish to use CocoaPods, you may always do it the old way : download/clone the project and copy the files located in Pod/Classes into your project.        
-Manticore-iosviewmanager does not require any external dependencies.
+If you do not wish to use CocoaPods, you may always do it the old way : download/clone the project and copy the files located in Pod/Classes into your project.         
+Manticore-iosviewmanager does not require any external dependencies.    
+
+If you wish to install the Example project, clone or download MCViewManager in your computer, then `pod install` in the terminal under `MCViewManager/Example`.
+
+
 
 ##Features
 
@@ -44,10 +56,7 @@ Features included with this release:
 
 ##Getting started : basic usage
 
------
-**Important note :** In Manticore, `Sections` and `Views` are `ViewControllers`.
 
------
 
 ###### Import Manticore
 Wherever you are using Manticore, importing `ManticoreViewFactory.h` will provide your file with all the necessary classes. 
