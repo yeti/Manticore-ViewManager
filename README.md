@@ -24,13 +24,10 @@
 
 Installation using CocoaPods is really easy. Add this line to your Podfile then `pod install` :
 
-    pod 'MCViewFactory', :git => 'https://github.com/YetiHQ/manticore-iosviewfactory.git'
+    pod 'MCViewManager', :git => 'https://github.com/YetiHQ/MCViewManager'
 
-Early releases of Manticore iOS View Factory must be installed directly from this github repository:
 
-    pod 'manticore-iosviewfactory', '~> X.X.X', :git => 'https://github.com/YetiHQ/manticore-iosviewfactory.git'
-
-If you do not wish to use CocoaPods, you may always do it the old way and copy the files into your project.     
+If you do not wish to use CocoaPods, you may always do it the old way : download/clone the project and copy the files located in Pod/Classes into your project.        
 Manticore-iosviewmanager does not require any external dependencies.
 
 ##Features
@@ -56,7 +53,7 @@ Features included with this release:
 Wherever you are using Manticore, importing `ManticoreViewFactory.h` will provide your file with all the necessary classes. 
 
 ```objc
-#import "ManticoreViewFactory.h"
+#import <ManticoreViewManager.h>
 ```
 
 
