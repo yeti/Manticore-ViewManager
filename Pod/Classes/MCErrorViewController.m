@@ -1,6 +1,6 @@
 //
 //  ErrorViewController.m
-//  Manticore iOSViewFactory
+//  Manticore View Manager
 //
 //  Created by Anthony Scherba on 7/9/12.
 //  Copyright (c) 2013 Yeti LLC. All rights reserved.

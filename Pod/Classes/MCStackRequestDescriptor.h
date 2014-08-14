@@ -1,6 +1,6 @@
 //
 //  MCStackRequestDescriptor.h
-//  Pods
+//  Manticore View Manager
 //
 //  Created by Philippe Bertin on 8/7/14.
 //

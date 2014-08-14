@@ -1,6 +1,6 @@
 //
 //  MCViewController.h
-//  Manticore iOSViewFactory
+//  Manticore View Manager
 //
 //  Created by Richard Fung on 9/19/12.
 //  Copyright (c) 2014 Yeti LLC. All rights reserved.

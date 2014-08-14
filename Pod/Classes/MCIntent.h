@@ -1,6 +1,6 @@
 /*
   MCActivity.h
-  Manticore iOSViewFactory
+  Manticore View Manager
 
   Created by Richard Fung on 9/19/12.
   Reworked, refactored and commented by Philippe Bertin on August 1, 2014
@@ -40,17 +40,20 @@
 
 
 /*!
- * Getter fot the activity Infos : the data the user wants to associate with the activity.
- * @discussion As many objects as needed may be added to this dictionary : it will then be available when the Activity's viewController is created, resumed and paused.
- * @discussion Be aware that this dictionary will take space in memory until this Activity is flushed from the stack.
+ * The data the user wants to associate with the activity. Note that if the Activity already exists, it will be added on top of the activityInfos.
+ *
+ * As many objects may be added to this dictionary : it will then be available when the Activity's viewController is created, resumed and paused.
+ *
+ * Be aware that this dictionary will take space in memory until its Activity is flushed from the stack.
  */
-@property (strong, nonatomic, readonly) NSMutableDictionary* activityInfos;
+@property (strong, nonatomic, readonly) NSMutableDictionary* userInfos;
 
 /*!
- * Getter and setter for this Activity's animation style.
- * @discussion The animation style will be used to transition between the currentActivity and this Activity.
- * @discussion Prefered animations are ANIMATION_NOTHING, ANIMATION_PUSH, ANIMATION_POP, UIViewAnimationOptionTransitionCrossDissolve. Other UI transitions work.
- * @discussion If no animationStyle is set, ANIMATION_NOTHING is the default.
+ * Activity's transition animation style. The animation style will be used to transition from the current Activity's View to the Activity that will be related to this intent.
+ *
+ * Prefered animations are ANIMATION_NOTHING, ANIMATION_PUSH, ANIMATION_POP, UIViewAnimationOptionTransitionCrossDissolve. Other UI transitions work.
+ *
+ * If no transitionAnimationStyle is set, ANIMATION_NOTHING is the default.
  */
 @property (readwrite) UIViewAnimationOptions transitionAnimationStyle;
 

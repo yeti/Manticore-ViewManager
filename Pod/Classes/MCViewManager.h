@@ -1,6 +1,6 @@
 //
 //  MCViewManager.h
-//  Manticore iOS-ViewManager
+//  Manticore View Manager
 //
 //  Created by Philippe Bertin on August 1, 2014
 //  Copyright (c) 2014 Yeti LLC. All rights reserved.
@@ -55,7 +55,7 @@
  * Stack size includes the current view controller.
  *
  */
-@property(nonatomic) int stackSize;
+@property(nonatomic) int activityStackSize;
 
 
 /*!
@@ -63,7 +63,7 @@
  * @discussion Count=1 means only the current Activity is in the stack and therefore navigationIntents should't be processed.
  *
  */
-@property(nonatomic, readonly) int historyStackCount;
+@property(nonatomic, readonly) int activityStackCount;
 
 
 
@@ -109,7 +109,7 @@
  *
  * This method does not clear the View cache. See "clearViewCache".
  */
-- (void)clearHistoryStack;
+- (void)clearActivityStack;
 
 
 /*!

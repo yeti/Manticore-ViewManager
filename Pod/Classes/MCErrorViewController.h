@@ -1,9 +1,9 @@
 //
 //  ErrorViewController.h
-//  Manticore iOSViewFactory
+//  Manticore View Manager
 //
 //  Created by Anthony Scherba on 7/9/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2014 YetiLLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

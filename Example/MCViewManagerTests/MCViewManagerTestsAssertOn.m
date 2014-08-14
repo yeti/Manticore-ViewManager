@@ -46,7 +46,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 
-    [[MCViewManager sharedManager] setStackSize:STACK_SIZE_UNLIMITED];
+    [[MCViewManager sharedManager] setActivityStackSize:STACK_SIZE_UNLIMITED];
     
     MCIntent *intent0 = [[MCIntent alloc] init];
     [intent0 setValue:@"View10" forKey:@"viewName"];

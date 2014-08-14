@@ -1,6 +1,6 @@
 /*
  MCActivity.m
- Manticore iOSViewFactory
+ Manticore View Manager
  
  Created by Richard Fung on 9/19/12.
  Reworked, refactored and commented by Philippe Bertin on August 1, 2014
@@ -18,7 +18,7 @@
 @property (strong, nonatomic, readwrite) NSString *viewName;
 @property (strong, nonatomic, readwrite) MCStackRequestDescriptor *stackRequestDescriptor;
 
-@property (strong, nonatomic, readwrite) NSMutableDictionary   *activityInfos;
+@property (strong, nonatomic, readwrite) NSMutableDictionary   *userInfos;
 
 @end
 
@@ -232,7 +232,7 @@
     if (self = [super init])
     {
         self.transitionAnimationStyle = UIViewAnimationTransitionNone;
-        self.activityInfos = [NSMutableDictionary dictionaryWithCapacity:4];
+        self.userInfos = [NSMutableDictionary dictionaryWithCapacity:4];
         self.sectionName = sectionName;
         self.stackRequestDescriptor = nil;
     }
@@ -248,7 +248,7 @@
     if (self = [super init])
     {
         self.transitionAnimationStyle = UIViewAnimationTransitionNone;
-        self.activityInfos = [NSMutableDictionary dictionaryWithCapacity:4];
+        self.userInfos = [NSMutableDictionary dictionaryWithCapacity:4];
         self.viewName = viewName;
         self.sectionName = sectionName;
         self.stackRequestDescriptor = nil;
@@ -265,7 +265,7 @@
     if (self = [super init])
     {
         self.transitionAnimationStyle = UIViewAnimationTransitionNone;
-        self.activityInfos = [NSMutableDictionary dictionaryWithDictionary:activityInfos];
+        self.userInfos = [NSMutableDictionary dictionaryWithDictionary:activityInfos];
         self.sectionName = sectionName;
         self.stackRequestDescriptor = nil;
     }
@@ -288,7 +288,7 @@
     if (self = [super init])
     {
         self.transitionAnimationStyle = UIViewAnimationTransitionNone;
-        self.activityInfos = [NSMutableDictionary dictionaryWithCapacity:4];
+        self.userInfos = [NSMutableDictionary dictionaryWithCapacity:4];
         self.stackRequestDescriptor = [[MCStackRequestDescriptor alloc] initWithRequestType:requestType
                                                                             requestCriteria:requestCriteria
                                                                                 requestInfo:requestInfo];
@@ -300,9 +300,9 @@
 
 -(NSString *) description {
     if (!_viewName && _sectionName)
-        return [NSString stringWithFormat:@"MCIntent associated with section : %@ \n dictionary=%@", _sectionName, _activityInfos];
+        return [NSString stringWithFormat:@"MCIntent associated with section : %@ \n dictionary=%@", _sectionName, _userInfos];
     else if (_viewName && _sectionName)
-        return [NSString stringWithFormat:@"MCIntent in section %@, associated with view %@ \n dictionary=%@", _sectionName, _viewName, _activityInfos];
+        return [NSString stringWithFormat:@"MCIntent in section %@, associated with view %@ \n dictionary=%@", _sectionName, _viewName, _userInfos];
 
     return [NSString stringWithFormat:@"MCIntent with stack request type %u - criteria %u - info %@", _stackRequestDescriptor.requestType, _stackRequestDescriptor.requestCriteria, [_stackRequestDescriptor.requestInfos description]];
 }

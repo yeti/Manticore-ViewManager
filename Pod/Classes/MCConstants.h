@@ -1,6 +1,6 @@
 //
 //  MCConstants
-//  Manticore iOSViewManager
+//  Manticore View Manager
 //
 //  Created by Richard H Fung on July 1, 2013 (Canada Day).
 //  Reworked, refactored and commented by Philippe Bertin on August 1, 2014

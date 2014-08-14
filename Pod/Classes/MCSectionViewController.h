@@ -1,6 +1,6 @@
 //
 //  MCSectionViewController.h
-//  Manticore iOSViewFactory
+//  Manticore View Manager
 //
 //  Created by Richard Fung on 2/7/13.
 //  Copyright (c) 2014 Yeti LLC. All rights reserved.

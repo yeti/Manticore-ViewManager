@@ -1,6 +1,6 @@
 //
 //  MCMainViewController.m
-//  Manticore iOSViewFactory
+//  Manticore View Manager
 //
 //  Created by Richard Fung on 1/22/13.
 //  Reworked, refactored and commented by Philippe Bertin on August 1, 2014

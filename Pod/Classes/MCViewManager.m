@@ -1,6 +1,6 @@
 //
 //  MCViewFactory.m
-//  Manticore iOSViewManager
+//  Manticore View Manager
 //
 //  Created by Philippe Bertin on August 1, 2014
 //  Copyright (c) 2014 Yeti LLC. All rights reserved.
@@ -55,8 +55,8 @@
 
 -(id)init{
     if (self = [super init]){
-        _stackSize = 0;
-        [self clearHistoryStack];
+        _activityStackSize = 0;
+        [self clearActivityStack];
     }
     return self;
 }
@@ -116,7 +116,7 @@
         return nil;
     
     // 2.
-    [activity.activityInfos addEntriesFromDictionary:[intent activityInfos]];
+    [activity.activityInfos addEntriesFromDictionary:[intent userInfos]];
     activity.transitionAnimationStyle = intent.transitionAnimationStyle;
     
     // 3.
@@ -130,9 +130,9 @@
 #pragma mark -
 
 
-- (void) clearHistoryStack
+- (void) clearActivityStack
 {
-    _historyStack = [NSMutableArray arrayWithCapacity:_stackSize];
+    _historyStack = [NSMutableArray arrayWithCapacity:_activityStackSize];
 }
 
 
@@ -157,17 +157,17 @@
 
 #pragma mark - Setters / Getters
 
--(void)setStackSize:(int)stackSize
+-(void)setActivityStackSize:(int)stackSize
 {
     // Verify stackSize if >= 0
     NSAssert(stackSize >= 0, @"Stack size can not be less than 0, you tried to set it at %i", stackSize);
-    _stackSize = stackSize;
+    _activityStackSize = stackSize;
     
     //TODO : if stackSize < currentStackSize remove from stack
 }
 
 
--(int)historyStackCount
+-(int)activityStackCount
 {
     return (int)_historyStack.count;
 }
@@ -199,7 +199,7 @@
     
     else if (intent.stackRequestDescriptor && !intent.sectionName && !intent.viewName)
     {
-        NSAssert((_stackSize != 1), @"Stack size can not be disabled (=1) when trying to pop or push");
+        NSAssert((_activityStackSize != 1), @"Stack size can not be disabled (=1) when trying to pop or push");
         NSAssert((_historyStack.count > 1), @"Stack needs at least 2 Activies in stack (including current) when trying to pop or push");
         
         // See if push of pop method wanted and call appropriate method.
@@ -413,18 +413,18 @@
 -(void)addActivityOnTopOfStack:(MCActivity *)activity
 {
     // Stack disabled, no saving on stack : return
-    if (_stackSize == STACK_SIZE_DISABLED)
+    if (_activityStackSize == STACK_SIZE_DISABLED)
         return;
     
     // Add activity on top of the stack
     [_historyStack addObject:activity];
     
     // Now check if adding the activity made historyStack too big
-    if (_stackSize != STACK_SIZE_UNLIMITED)
+    if (_activityStackSize != STACK_SIZE_UNLIMITED)
     {
-        NSAssert(_stackSize > 0, @"stack size must be positive");
+        NSAssert(_activityStackSize > 0, @"stack size must be positive");
         
-        if (_historyStack.count > _stackSize)
+        if (_historyStack.count > _activityStackSize)
         {
             // Remove first object to keet the stack bounded by stackSize.
             [_historyStack removeObjectAtIndex:0];

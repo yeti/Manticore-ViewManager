@@ -1,5 +1,6 @@
+//
 //  MCViewFactory.h
-//  Manticore iOSViewFactory
+//  Manticore View Manager
 //
 //  Created by Richard Fung on 3/15/13.
 //  Reworked, refactored and commented by Philippe Bertin on August 1, 2014
