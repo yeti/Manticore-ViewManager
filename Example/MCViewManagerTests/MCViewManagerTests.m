@@ -38,7 +38,7 @@
 
 - (NSMutableArray *)getHistoryStack
 {
-    return [[MCViewManager sharedManager] valueForKey:@"historyStack"];
+    return [[MCViewManager sharedManager] valueForKey:@"activityStack"];
 }
 
 - (void)setUp
@@ -82,7 +82,7 @@
 
 - (void)tearDown
 {
-    [[MCViewManager sharedManager] setValue:[NSMutableArray arrayWithCapacity:1] forKey:@"historyStack"];
+    [[MCViewManager sharedManager] setValue:[NSMutableArray arrayWithCapacity:1] forKey:@"activityStack"];
     
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];

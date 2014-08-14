@@ -38,7 +38,7 @@
 /*!
  * Activities history stack
  */
-@property(nonatomic, strong, readwrite) NSMutableArray *historyStack;
+@property(nonatomic, strong, readwrite) NSMutableArray *activityStack;
 
 
 @end
@@ -132,7 +132,7 @@
 
 - (void) clearActivityStack
 {
-    _historyStack = [NSMutableArray arrayWithCapacity:_activityStackSize];
+    _activityStack = [NSMutableArray arrayWithCapacity:_activityStackSize];
 }
 
 
@@ -169,7 +169,7 @@
 
 -(int)activityStackCount
 {
-    return (int)_historyStack.count;
+    return (int)_activityStack.count;
 }
 
 
@@ -200,7 +200,7 @@
     else if (intent.stackRequestDescriptor && !intent.sectionName && !intent.viewName)
     {
         NSAssert((_activityStackSize != 1), @"Stack size can not be disabled (=1) when trying to pop or push");
-        NSAssert((_historyStack.count > 1), @"Stack needs at least 2 Activies in stack (including current) when trying to pop or push");
+        NSAssert((_activityStack.count > 1), @"Stack needs at least 2 Activies in stack (including current) when trying to pop or push");
         
         // See if push of pop method wanted and call appropriate method.
         switch (intent.stackRequestDescriptor.requestType)
@@ -294,11 +294,11 @@
     NSAssert(foundPositionInStack > 0, @"%s : Could not find activity corresponding to intent : %@", __func__, intent);
     
     // Find and remove activity at position
-    MCActivity *activity = [_historyStack objectAtIndex:foundPositionInStack];
-    [_historyStack removeObjectAtIndex:foundPositionInStack];
+    MCActivity *activity = [_activityStack objectAtIndex:foundPositionInStack];
+    [_activityStack removeObjectAtIndex:foundPositionInStack];
     
     // Push on top of stack
-    [_historyStack addObject:activity];
+    [_activityStack addObject:activity];
     
     return activity;
 }
@@ -378,7 +378,7 @@
     }
     
     // Make sure position is between [0;_historyStack.count-2]
-    if (foundPositionInStack == _historyStack.count-1)
+    if (foundPositionInStack == _activityStack.count-1)
     {
         NSLog(@"%s : Can not push current intent", __func__);
         return nil;
@@ -390,11 +390,11 @@
     }
     
     // Find activity
-    MCActivity *activity = [_historyStack objectAtIndex:foundPositionInStack];
+    MCActivity *activity = [_activityStack objectAtIndex:foundPositionInStack];
 
     // Remove all activities until foundPosition
-    while (_historyStack.count > (foundPositionInStack+1)) {
-        [_historyStack removeLastObject];
+    while (_activityStack.count > (foundPositionInStack+1)) {
+        [_activityStack removeLastObject];
     }
     
     return activity;
@@ -417,17 +417,17 @@
         return;
     
     // Add activity on top of the stack
-    [_historyStack addObject:activity];
+    [_activityStack addObject:activity];
     
     // Now check if adding the activity made historyStack too big
     if (_activityStackSize != STACK_SIZE_UNLIMITED)
     {
         NSAssert(_activityStackSize > 0, @"stack size must be positive");
         
-        if (_historyStack.count > _activityStackSize)
+        if (_activityStack.count > _activityStackSize)
         {
             // Remove first object to keet the stack bounded by stackSize.
-            [_historyStack removeObjectAtIndex:0];
+            [_activityStack removeObjectAtIndex:0];
         }
     }
     
@@ -445,9 +445,9 @@
  */
 -(NSInteger)positionOfActivityInHistory:(MCActivity *)ptrToActivity
 {
-    for (NSInteger i=_historyStack.count-1; i>=0; i--)
+    for (NSInteger i=_activityStack.count-1; i>=0; i--)
     {
-        if ([_historyStack objectAtIndex:i] == ptrToActivity)
+        if ([_activityStack objectAtIndex:i] == ptrToActivity)
             return i;
     }
     // Not found
@@ -459,7 +459,7 @@
  */
 -(NSInteger)positionOfActivityInHistoryByPosition:(NSNumber *)positionFromLast
 {
-    NSInteger position = _historyStack.count - [positionFromLast integerValue] - 1;
+    NSInteger position = _activityStack.count - [positionFromLast integerValue] - 1;
     return position;
 }
 
@@ -469,9 +469,9 @@
  */
 -(NSInteger)positionOfActivityInHistoryByName:(NSString *)viewName
 {
-    for (NSInteger i=_historyStack.count-1; i>=0; i--)
+    for (NSInteger i=_activityStack.count-1; i>=0; i--)
     {
-        MCActivity *activity = [_historyStack objectAtIndex:i];
+        MCActivity *activity = [_activityStack objectAtIndex:i];
         if (activity.associatedViewName)
         {
             if ([activity.associatedViewName isEqualToString:viewName])
@@ -503,11 +503,11 @@
     NSInteger sectionCounter = [sectionPosition integerValue];
     NSInteger numberOfSectionChanges = 0;
     
-    NSString *currentSectionName = ((MCActivity *)[_historyStack lastObject]).associatedSectionName;
+    NSString *currentSectionName = ((MCActivity *)[_activityStack lastObject]).associatedSectionName;
     
-    for (NSInteger i = _historyStack.count -1; i>=0; i--)
+    for (NSInteger i = _activityStack.count -1; i>=0; i--)
     {
-        MCActivity *activity = [_historyStack objectAtIndex:i];
+        MCActivity *activity = [_activityStack objectAtIndex:i];
         
         // Check if changed section
         if (![activity.associatedSectionName isEqualToString:currentSectionName])
@@ -541,9 +541,9 @@
     NSInteger foundPosition = -1;
     bool foundSection = false;
     
-    for (NSInteger i=_historyStack.count-1; i>=0; i--)
+    for (NSInteger i=_activityStack.count-1; i>=0; i--)
     {
-        MCActivity *activity = [_historyStack objectAtIndex:i];
+        MCActivity *activity = [_activityStack objectAtIndex:i];
         
         // When section is found
         if ([activity.associatedSectionName isEqualToString:sectionName])
@@ -575,11 +575,11 @@
     NSAssert([sectionPosition intValue] >=0, @"%s : Put a ticket on Github, sectionPosition cannot be @u", __func__, [sectionPosition intValue]);
     
     NSInteger numberOfSectionChanges = 0;
-    NSString *currentSectionName = ((MCActivity *)[_historyStack lastObject]).associatedSectionName;
+    NSString *currentSectionName = ((MCActivity *)[_activityStack lastObject]).associatedSectionName;
     
-    for (NSInteger i = _historyStack.count -1; i>=0; i--)
+    for (NSInteger i = _activityStack.count -1; i>=0; i--)
     {
-        MCActivity *activity = [_historyStack objectAtIndex:i];
+        MCActivity *activity = [_activityStack objectAtIndex:i];
         
         if (![activity.associatedSectionName isEqualToString:currentSectionName])
         {
@@ -607,15 +607,15 @@
 -(NSInteger)positionOfActivityLastInSectionNamed:(NSString *)sectionName
 {
     // Make sure sectionName is different from current Section
-    if ([((MCActivity*)[_historyStack objectAtIndex:_historyStack.count-1]).associatedSectionName isEqualToString:sectionName])
+    if ([((MCActivity*)[_activityStack objectAtIndex:_activityStack.count-1]).associatedSectionName isEqualToString:sectionName])
     {
         NSLog(@"%s : Due to the nature of this method, it is not possible to use ActivityLastInSectionNamed(nameOfTheCurrentSection). It is required that the Section to go to (\"sectionName\") is different from the current Section.", __func__);
         return -1;
     }
     
-    for (NSInteger i=_historyStack.count-1; i>=0; i--)
+    for (NSInteger i=_activityStack.count-1; i>=0; i--)
     {
-        MCActivity *activity = [_historyStack objectAtIndex:i];
+        MCActivity *activity = [_activityStack objectAtIndex:i];
         
         // When section is found
         if ([activity.associatedSectionName isEqualToString:sectionName])
