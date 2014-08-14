@@ -11,12 +11,12 @@
 
 
 /*!
- * This class tests all the methode when processing an intent.
+ * This class tests all the methode when processing an intent. It has way to counter-strike when Assertions are on :
  *
- * If Targets -> MCViewManagerTests -> Apple LLVM 5.1 - Preprocessing -> Enable Foundation Assertions : YES then the tests WILL FAIL.
+ * In -> Targets -> MCViewManagerTests -> Apple LLVM 5.1 - Preprocessing -> Enable Foundation Assertions : NO
  *
  */
-@interface MCViewManagerTests : XCTestCase
+@interface MCViewManagerTestsAssertOn : XCTestCase
 
 @property (strong, nonatomic) MCActivity *activity0;
 @property (strong, nonatomic) MCActivity *activity1;
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation MCViewManagerTests
+@implementation MCViewManagerTestsAssertOn
 
 - (NSMutableArray *)getHistoryStack
 {
@@ -48,21 +48,58 @@
 
     [[MCViewManager sharedManager] setStackSize:STACK_SIZE_UNLIMITED];
     
+    MCIntent *intent0 = [[MCIntent alloc] init];
+    [intent0 setValue:@"View10" forKey:@"viewName"];
+    [intent0 setValue:@"Section1" forKey:@"sectionName"];
     
-    MCIntent *intent0 = [MCIntent newActivityWithAssociatedViewNamed:@"View10" inSectionNamed:@"Section1"];
-    MCIntent *intent1 = [MCIntent newActivityWithAssociatedViewNamed:@"View11" inSectionNamed:@"Section1"];
-    MCIntent *intent2 = [MCIntent newActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
-    MCIntent *intent3 = [MCIntent newActivityWithAssociatedViewNamed:@"View13" inSectionNamed:@"Section1"];
-    MCIntent *intent4 = [MCIntent newActivityWithAssociatedViewNamed:@"View21" inSectionNamed:@"Section2"];
-    MCIntent *intent5 = [MCIntent newActivityWithAssociatedViewNamed:@"View22" inSectionNamed:@"Section2"];
-    MCIntent *intent6 = [MCIntent newActivityWithAssociatedViewNamed:@"View21" inSectionNamed:@"Section2"];
-    MCIntent *intent7 = [MCIntent newActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
-    MCIntent *intent8 = [MCIntent newActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
-    MCIntent *intent9 = [MCIntent newActivityWithAssociatedViewNamed:@"View31" inSectionNamed:@"Section3"];
-    MCIntent *intent10 = [MCIntent newActivityWithAssociatedViewNamed:@"View32" inSectionNamed:@"Section3"];
-    MCIntent *intent11 = [MCIntent newActivityWithAssociatedViewNamed:@"View34" inSectionNamed:@"Section3"];
-    MCIntent *intent12 = [MCIntent newActivityWithAssociatedViewNamed:@"View33" inSectionNamed:@"Section3"];
+    MCIntent *intent1 = [[MCIntent alloc] init];
+    [intent1 setValue:@"View11" forKey:@"viewName"];
+    [intent1 setValue:@"Section1" forKey:@"sectionName"];
     
+    MCIntent *intent2 = [[MCIntent alloc] init];
+    [intent2 setValue:@"View12" forKey:@"viewName"];
+    [intent2 setValue:@"Section1" forKey:@"sectionName"];
+    
+    MCIntent *intent3 = [[MCIntent alloc] init];
+    [intent3 setValue:@"View13" forKey:@"viewName"];
+    [intent3 setValue:@"Section1" forKey:@"sectionName"];
+    
+    MCIntent *intent4 = [[MCIntent alloc] init];
+    [intent4 setValue:@"View21" forKey:@"viewName"];
+    [intent4 setValue:@"Section2" forKey:@"sectionName"];
+    
+    MCIntent *intent5 = [[MCIntent alloc] init];
+    [intent5 setValue:@"View22" forKey:@"viewName"];
+    [intent5 setValue:@"Section2" forKey:@"sectionName"];
+    
+    MCIntent *intent6 = [[MCIntent alloc] init];
+    [intent6 setValue:@"View21" forKey:@"viewName"];
+    [intent6 setValue:@"Section2" forKey:@"sectionName"];
+    
+    MCIntent *intent7 = [[MCIntent alloc] init];
+    [intent7 setValue:@"View12" forKey:@"viewName"];
+    [intent7 setValue:@"Section1" forKey:@"sectionName"];
+    
+    MCIntent *intent8 = [[MCIntent alloc] init];
+    [intent8 setValue:@"View12" forKey:@"viewName"];
+    [intent8 setValue:@"Section1" forKey:@"sectionName"];
+    
+    MCIntent *intent9 = [[MCIntent alloc] init];
+    [intent9 setValue:@"View31" forKey:@"viewName"];
+    [intent9 setValue:@"Section3" forKey:@"sectionName"];
+    
+    MCIntent *intent10 = [[MCIntent alloc] init];
+    [intent10 setValue:@"View32" forKey:@"viewName"];
+    [intent10 setValue:@"Section3" forKey:@"sectionName"];
+    
+    MCIntent *intent11 = [[MCIntent alloc] init];
+    [intent11 setValue:@"View34" forKey:@"viewName"];
+    [intent11 setValue:@"Section3" forKey:@"sectionName"];
+    
+    MCIntent *intent12 = [[MCIntent alloc] init];
+    [intent12 setValue:@"View33" forKey:@"viewName"];
+    [intent12 setValue:@"Section3" forKey:@"sectionName"];
+
     
     _activity0 = [[MCViewManager sharedManager] processIntent:intent0];
     _activity1 = [[MCViewManager sharedManager] processIntent:intent1];
@@ -131,7 +168,9 @@
 
 - (void)testNewActivityWithSectionNoView
 {
-    MCIntent *intentPush = [MCIntent newActivityWithAssociatedSectionNamed:@"Section1"];
+    MCIntent *intentPush = [[MCIntent alloc] init];
+    [intentPush setValue:@"Section1" forKey:@"sectionName"];
+    
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     NSMutableArray *historyStack = [self getHistoryStack];
@@ -146,7 +185,10 @@
 
 - (void)testNewActivityWithSectionAndView
 {
-    MCIntent *intentPush = [MCIntent newActivityWithAssociatedViewNamed:@"View10" inSectionNamed:@"Section1"];
+    MCIntent *intentPush = [[MCIntent alloc] init];
+    [intentPush setValue:@"View10" forKey:@"viewName"];
+    [intentPush setValue:@"Section1" forKey:@"sectionName"];
+    
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     NSMutableArray *historyStack = [self getHistoryStack];
@@ -193,8 +235,15 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent pushActivityFromHistoryByName:@"View21"];
+    // Can't use :
+    // MCIntent *intentPush = [MCIntent pushActivityFromHistoryByName:@"View21"];
+    // because of NSAssert on the name. So to bypass the NSAssert :
+    MCIntent *intentPush = [MCIntent pushActivityFromHistoryByPosition:10];
+    [intentPush setValue:@"View21" forKeyPath:@"stackRequestDescriptor.requestInfos"];
+    
+    
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
+    
     
     XCTAssertTrue(historyStack.count == 13, @"HistoryStack Should contain 13");
     XCTAssertEqualObjects([historyStack objectAtIndex:4], _activity4, @"Did not push correctly.");
@@ -264,8 +313,11 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    
-    MCIntent *intentPop = [MCIntent popToActivityInHistoryByName:@"View21"];
+    // Can't use :
+    // MCIntent *intentPush = [MCIntent popActivityInHistoryByName:@"View21"];
+    // because of NSAssert on the name. So to bypass the NSAssert :
+    MCIntent *intentPop = [MCIntent popToActivityInHistoryByPosition:10];
+    [intentPop setValue:@"View21" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertTrue(historyStack.count == 7, @"HistoryStack Should contain 7");
@@ -278,12 +330,12 @@
     XCTAssertNil(activity, @"Should be nil");
     
     // Pop to non-Existing View in stack
-    intentPop = [MCIntent popToActivityInHistoryByName:@"View31"];
+    [intentPop setValue:@"View31" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Should be nil");
     
     // Pop to non-Existing Section (without view) in stack
-    intentPop = [MCIntent popToActivityInHistoryByName:@"Section1"];
+    [intentPop setValue:@"Section1" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Should be nil");
     
@@ -291,7 +343,7 @@
     activity = [[MCActivity alloc] initWithAssociatedSectionNamed:@"Section4"];
     [historyStack insertObject:activity atIndex:3];
     // And pop to it
-    intentPop = [MCIntent popToActivityInHistoryByName:@"Section4"];
+    [intentPop setValue:@"Section4" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertTrue(historyStack.count == 4, @"HistoryStack Should contain 4");
     XCTAssertEqualObjects([historyStack objectAtIndex:2], _activity2, @"Did not push correctly.");
@@ -349,10 +401,17 @@
 
 - (void)testPopToActivityRootInSectionNamed
 {
+    
     NSMutableArray *historyStack = [self getHistoryStack];
     
+    // Can't use :
+    // MCIntent *intentPop = [MCIntent popToActivityRootInSectionNamed:@"Section1"];
+    // because of NSAssert on the name. So to bypass the NSAssert :
+    
     // TRY WITH SECTION 1
-    MCIntent *intentPop = [MCIntent popToActivityRootInSectionNamed:@"Section1"];
+    MCIntent *intentPop = [MCIntent popToActivityRootInSectionLast];
+    [intentPop setValue:@"Section1" forKeyPath:@"stackRequestDescriptor.requestInfos"];
+    
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 8, @"HistoryStack Should contain 8");
@@ -362,7 +421,9 @@
     
     
     // TRY WITH SECTION 2
-    intentPop = [MCIntent popToActivityRootInSectionNamed:@"Section2"];
+    intentPop = [MCIntent popToActivityRootInSectionLast];
+    [intentPop setValue:@"Section2" forKeyPath:@"stackRequestDescriptor.requestInfos"];
+    
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 5, @"HistoryStack Should contain 5");
@@ -391,8 +452,14 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
+    // Can't use :
+    // MCIntent *intentPop = [MCIntent popToActivityRootInSectionNamed:@"Section1"];
+    // because of NSAssert on the name. So to bypass the NSAssert :
+    
     // TRY WITH SECTION 1
-    MCIntent *intentPop = [MCIntent popToActivityLastInSectionNamed:@"Section1"];
+    MCIntent *intentPop = [MCIntent popToActivityLastInSectionLast];
+    [intentPop setValue:@"Section1" forKeyPath:@"stackRequestDescriptor.requestInfos"];
+    
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 9, @"HistoryStack Should contain 8");
@@ -402,7 +469,9 @@
     
     
     // TRY WITH SECTION 2
-    intentPop = [MCIntent popToActivityLastInSectionNamed:@"Section2"];
+    intentPop = [MCIntent popToActivityLastInSectionLast];
+    [intentPop setValue:@"Section2" forKeyPath:@"stackRequestDescriptor.requestInfos"];
+    
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 7, @"HistoryStack Should contain 5");
@@ -412,7 +481,9 @@
     
     
     // TRY WITH SECTION 2 AGAIN
-    intentPop = [MCIntent popToActivityLastInSectionNamed:@"Section2"];
+    intentPop = [MCIntent popToActivityLastInSectionLast];
+    [intentPop setValue:@"Section2" forKeyPath:@"stackRequestDescriptor.requestInfos"];
+    
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertNil(activity, @"Activity Should be Nil");

@@ -24,6 +24,7 @@
 		F684BCE3199C1CBB00DD4B36 /* MCMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F684BCE1199C1CBB00DD4B36 /* MCMainVC.m */; };
 		F684BCE4199C1CBB00DD4B36 /* MCMainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F684BCE2199C1CBB00DD4B36 /* MCMainVC.xib */; };
 		F684BCE7199C1D9400DD4B36 /* MCAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F684BCE6199C1D9400DD4B36 /* MCAppModel.m */; };
+		F6F335AD199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F335AC199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		F684BCE2199C1CBB00DD4B36 /* MCMainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCMainVC.xib; path = ViewControllers/MCMainVC.xib; sourceTree = "<group>"; };
 		F684BCE5199C1D9400DD4B36 /* MCAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCAppModel.h; sourceTree = "<group>"; };
 		F684BCE6199C1D9400DD4B36 /* MCAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCAppModel.m; sourceTree = "<group>"; };
+		F6F335A9199C405E0030CCC8 /* MCViewManagerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCViewManagerTests-Prefix.pch"; sourceTree = "<group>"; };
+		F6F335AC199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCViewManagerTestsAssertOn.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				F684BCDD199C154400DD4B36 /* MCViewManagerTests.m */,
+				F6F335AC199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m */,
 				F684BCCE199C130E00DD4B36 /* Supporting Files */,
 			);
 			path = MCViewManagerTests;
@@ -159,6 +163,7 @@
 			children = (
 				F684BCCF199C130E00DD4B36 /* MCViewManagerTests-Info.plist */,
 				F684BCD0199C130E00DD4B36 /* InfoPlist.strings */,
+				F6F335A9199C405E0030CCC8 /* MCViewManagerTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F684BCDE199C154400DD4B36 /* MCViewManagerTests.m in Sources */,
+				F6F335AD199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
