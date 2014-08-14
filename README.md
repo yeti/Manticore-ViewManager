@@ -46,16 +46,15 @@ If you wish to install the Example project, clone or download MCViewManager in y
 
 Features included with this release:
 
-* Two-level hierarchical view controller
-* Intents to switch between activities, similar to Android intents
-* Easy transmission of data between Manticore View-Controllers (MCViewController and MCSectionViewController)
-* Static navigation between view-controllers using their names
-* Dynamic navigation between view-controllers using the history stack
+* Creation of Activities (and therefore Views) in 2 (two) lines of code
+* Intents for navigation between activities with an extensive list of Pop and Push methods
+* Easy transmission of data between Views
+* Tabbed Applications made easy
+* Well documented and commented
 
 
 
 ##Getting started : basic usage
-
 
 
 ###### Import Manticore
