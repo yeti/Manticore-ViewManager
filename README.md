@@ -215,11 +215,11 @@ At this point, you create an intent that is either associated with a Section or 
 
 ```objc
 // Intent for a  new Activity with only an associated Section
-MCIntent *intent = [MCIntent intentNewActivityWithAssociatedSectionNamed: sectionName];
+MCIntent *intent = [MCIntent intentNewActivityWithAssociatedSectionNamed: @"sectionName"];
 
 // Intent for a new Activity associated with a View, in a Section
-MCIntent *intent = [MCIntent intentNewActivityWithAssociatedViewNamed: viewName
-                                                        inSectionNamed: sectionName;
+MCIntent *intent = [MCIntent intentNewActivityWithAssociatedViewNamed: @"viewName"
+                                                        inSectionNamed: @"sectionName";
 ```
 
 #####2. Setup the intent
@@ -241,7 +241,8 @@ Now that you have the intent, you may set it up.
   intent.transitionAnimationStyle = ANIMATION_NOTHING
   ```
   
-* Add objects to the intent's `userInfos` dictionary. These objects will be added to the activity's `activityInfos` dictionary.
+* Add objects to the intent's `userInfos` dictionary.   
+  These objects will be added to the activity's `activityInfos` dictionary, which will be available to the View when it gets loaded.
 
 #####3. Process the Intent to become an Activity
 
