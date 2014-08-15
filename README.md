@@ -162,9 +162,6 @@ Both Views and Sections are sub-classes of `UIViewController`.
 
 
 
-
-
-
 #### Staying organized
 
 We highly suggest making macros for all your Sections and Views' names.       
@@ -190,14 +187,72 @@ MCIntent* intent = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View_1" 
 
 
 
-##Intents and activities
+##Activities
 
-####Activity
+####Definition
 
 An activity is a single, focused thing that the user can do. An activity may contain data, and is associated with a View-Controller. There are two cases possible :
 
 1. The Activity is associated with a View in a Section
 2. The Activity is only associated with a Section
+
+Activities are managed by MCViewManager. You have to make intents to either : create them or resume them by bringing them on top of the stack.
+
+
+###Activity Lifecycle (example of full lifecycle)
+
+1. Create an intent for a new Activity
+2. Set up the intent
+3. Process the Intent to become an Activity
+4. View gets loaded (View associated with Activity)
+5. New Intent processed (Another activity)
+6. Later, intent to bring back Activity
+
+
+#####1. Create an intent for a new Activity
+
+At this point, you create an intent that is either associated with a Section or with a View in a Section.
+
+```objc
+// Intent for a  new Activity with only an associated Section
+MCIntent *intent = [MCIntent intentNewActivityWithAssociatedSectionNamed: sectionName];
+
+// Intent for a new Activity associated with a View, in a Section
+MCIntent *intent = [MCIntent intentNewActivityWithAssociatedViewNamed: viewName
+                                                        inSectionNamed: sectionName;
+```
+
+#####2. Setup the intent
+
+Now that you have the intent, you may set it up.    
+
+* Set the `transitionAnimationStyle`
+  Valid animation styles include all valid `UIViewAnimationTransition` and the following constants, listed below:
+  * `ANIMATION_NOTHING`
+  * `ANIMATION_PUSH`
+  * `ANIMATION_PUSH_LEFT`
+  * `ANIMATION_POP`
+  * `ANIMATION_POP_LEFT`
+  * `ANIMATION_SLIDE_FROM_BOTTOM`
+  * `ANIMATION_SLIDE_FROM_TOP`
+  
+  ```objc
+  // If you do not set the animation style, it is set to ANIMATION_NOTHING
+  intent.transitionAnimationStyle = ANIMATION_NOTHING
+  ```
+  
+* Add objects to the intent's `userInfos` dictionary. These objects will be added to the activity's `activityInfos` dictionary.
+
+#####3. Process the Intent to become an Activity
+
+
+
+
+#####4. View gets loaded (View associated with Activity)
+#####5. New Intent processed (Another activity)
+#####6. Later, intent to bring back Activity
+
+
 
 ###Making an intent
 
@@ -210,7 +265,7 @@ When you want to switch to a View, you have to **make an intent**, using the **M
     
 Here is a list of the most commom intents :
 
-1. Create a new Activity
+1. Intent to create a new Activity
 
     ```objc
     // Intent for a  new Activity with only an associated Section
@@ -250,11 +305,20 @@ Here is a list of the most commom intents :
 
 
 
-###Transition to the intent
+####Transitionning to an Activity
+
+After you have created your Intent, simply process it using the unique method provided by MCViewManager :
+
+```objc
+[[MCViewModel sharedModel] processIntent:intent];
+```
 
 
 
-### Sending an intent
+
+
+
+
 
 A view transition happens when a new intent is assigned to `setCurrentSection:`.
 
