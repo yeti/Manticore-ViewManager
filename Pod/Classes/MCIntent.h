@@ -67,14 +67,14 @@
  *            **  Activities  **
  *            **--------------**
  *
- *  Activities store information about are always related to a Section and should always be related to a View.
+ *  Activities are always related to a Section and should always be related to a View.
  *  An Activity contains :
- *          - sectionName   : the intent's related Section.
- *          - viewName      : the intent's related View -> the MCViewController that should be loaded when intent is processed
+ *          - associatedSectionName   : the intent's associated Section.
+ *          - associatedViewName      : the intent's associated View 
  *          - animationStyle: the animation style when switching from the current View to the Intent's View (-> when the intent is processed)
- *          - a dictionary  : the data you want to associate with the intent. In the View associated with the intent, you can use this dictionary to show the right data. Manticore call the functions "onCreate", "onResume" and "onPause" when displaying Views and provide the Intent so that you can retrieve the data from this Dictionary.
+ *          - activityInfos  : the data associated with the Activity. When creating an Intent, add some entries in the "userInfos" dictionary. This dictionary will then added to the Activity's dictionary when created/loaded from stack. The View can then access this dictionary when Manticore calls the functions "onCreate", "onResume" and "onPause". Implement these methods in your View to have them automatically called.
  
- *  However, this is true AFTER intents are processed.
+ *  You don't manage activities yourself. Instead, you make intents and process then with MCViewManager.
  *  Before they are processed, intents can have two forms : 
  *      1. "Static" : when creating new intents (with the methods : "intentWith...")
  *      2. "Dynamic" (also named "navigation intent") : the intent contains a request for an already existing Intent in the history stack. It will contain all the elements in the above list AFTER it is processed.
@@ -84,8 +84,8 @@
  *            **  HOW TO READ THE SCHEMAS  **
  *            **---------------------------**
  *
- *               +-- The Section (MCSectionViewController) the Intent is related to
- *               |       +-- A column represent an intent in the stack (with its related Section and View)
+ *               +-- The Section the Activity is related to
+ *               |       +-- A column represent an Activity in the stack (with its related Section and View)
  *               |       |
  *               V       V
  * +--------+---- ----++---+---+---+---+---+---+---+---+---+---+-+-+
@@ -95,7 +95,7 @@
  * +--------+---- ----++- -+---+---+---+---+---+---+---+---+---+- -+
  *               ^        \_ From oldest intent to the lastest _/
  *               |
- *               +-- The View (MCViewController) the Intent is related to
+ *               +-- The View the Intent is related to
  *
  *
  *  "View (name)"       = (name of the) view-controller sub-classing MCViewController
@@ -112,12 +112,12 @@
 #pragma mark - New Activity creation methods
 
 
-/*            **-------------------------------------------------------**
- *            **  Schema for "newActivityWithAssociatedSectionNamed:"  **
- *            **-------------------------------------------------------**
+/*            **-------------------------------------------------------------**
+ *            **  Schema for "intentNewActivityWithAssociatedSectionNamed:"  **
+ *            **-------------------------------------------------------------**
  *
  *
- * Method used in example : "newActivityWithRelatedSectionName:Section3VC"
+ * Method used in example : "intentNewActivityWithAssociatedSectionNamed:Section3VC"
  *
  * +--------+---------++---+---+---+---+---+---+---+---+---+---+-+-+     +---+
  * |        |SectionVC|| 1 | 1 | 1 | 2 | 2 | 1 | 1 | 3 | 3 | 3 | 3 |     | 3 |
@@ -128,42 +128,43 @@
  */
 
 /*!
- * @function newActivityWithAssociatedSectionNamed
+ * @function intentNewActivityWithAssociatedSectionNamed
  * @discussion Sections without Views should be avoided.
- * @discussion Creates and return a new Activity. This Activity will not be related to any View, only a Section. Behavior has not been tested. 
- * @discussion Instead, we recommand creating a dummy MCSectionViewController sub-class and then create Activities related to this Section for your Views that can not be grouped in Sections.
+ * @discussion Creates and return a new intent.
+ *
  * @param sectionName       The Section the Activity will be related to
  */
-+(MCIntent *) newActivityWithAssociatedSectionNamed: (NSString*) sectionName;
++(MCIntent *) intentNewActivityWithAssociatedSectionNamed: (NSString*) sectionName;
 
 /*!
- * @function newActivityWithAssociatedSectionNamed andActivityInfos
+ * @function intentNewActivityWithAssociatedSectionNamed andActivityInfos
  * @discussion Only used by the undo operation.
  * @discussion Creates and return a new Activity. This Activity will not be related to any View, only a Section. Behavior has not been tested.
  * @discussion Instead, we recommand creating a dummy MCSectionViewController sub-class and then create Activities related to this Section for your Views that can not be grouped in Sections.
  * @param sectionName       The Section the Activity will be related to
  * @param andSavedInstance  The Activity's savedInstance dictionary
  */
-+(MCIntent *) newActivityWithAssociatedSectionNamed: (NSString*) sectionName
-                                     andActivityInfos: (NSMutableDictionary*) activityInfos;
++(MCIntent *) intentNewActivityWithAssociatedSectionNamed: (NSString*) sectionName
+                                         andActivityInfos: (NSMutableDictionary*) activityInfos;
 
 /*!
- * @function newActivityWithAssociatedSectionNamed andAnimation
+ * @function intentNewActivityWithAssociatedSectionNamed andAnimation
  * @discussion Creates and return a new Activity. This Activity will not be related to any View, only a Section. Behavior has not been tested.
  * @discussion Instead, we recommand creating a dummy MCSectionViewController sub-class and then create Activities related to this Section for your Views that can not be grouped in Sections.
+ *
  * @param sectionName   The Section the Activity will be related to
  * @param animation     The animation to this Activity's Section when processed.
  * @discussion Prefered animations are ANIMATION_NOTHING, ANIMATION_PUSH, ANIMATION_POP, UIViewAnimationOptionTransitionCrossDissolve. Other UI transitions work.
  */
-+(MCIntent *) newActivityWithAssociatedSectionNamed: (NSString*) name
-                                         andAnimation: (UIViewAnimationOptions) animation;
++(MCIntent *) intentNewActivityWithAssociatedSectionNamed: (NSString*) name
+                                             andAnimation: (UIViewAnimationOptions) animation;
 
 
 
 
-/*            **--------------------------------------------------------------------**
- *            **  Schema for "newActivityWithAssociatedViewNamed: inSectionNamed:"  **
- *            **--------------------------------------------------------------------**
+/*            **--------------------------------------------------------------------------**
+ *            **  Schema for "intentNewActivityWithAssociatedViewNamed: inSectionNamed:"  **
+ *            **--------------------------------------------------------------------------**
  *
  *
  * Input in example : "newActivityWithAssociatedViewNamed:Section3VC andRelatedViewName:View35VC"
@@ -177,25 +178,29 @@
  */
 
 /*!
- * @function newActivityWithAssociatedViewNamed inSectionNamed
- * @discussion Creates and return a new Activity attributed to a Section and related to a View.
+ * @function intentNewActivityWithAssociatedViewNamed inSectionNamed
+ * @discussion Creates and return an intent for a new Activity associated to a View in a Section.
+ *
  * @param sectionName   The Section the Activity will be related with
  * @param viewName      The View the Activity will be related to
  */
-+(MCIntent *) newActivityWithAssociatedViewNamed: (NSString*) viewName
-                                    inSectionNamed: (NSString*) sectionName;
++(MCIntent *) intentNewActivityWithAssociatedViewNamed: (NSString*) viewName
+                                        inSectionNamed: (NSString*) sectionName;
 
 /*!
- * @function newActivityWithAssociatedViewNamed: inSectionNamed: andAnimation:
- * @discussion Creates and return a new Activity attributed to a Section and related to a View and with an animation.
+ * @function intentNewActivityWithAssociatedViewNamed: inSectionNamed: andAnimation:
+ * @discussion Creates and return an intent for a new Activity associated to a View in a Section.
+ *
  * @param sectionName   The Section the Activity will be related with
  * @param viewName      The View the Activity will be related to
  * @param animation     The animation to this Activity's View when processed. 
  * @discussion Prefered animations are ANIMATION_NOTHING, ANIMATION_PUSH, ANIMATION_POP, UIViewAnimationOptionTransitionCrossDissolve. Other UI transitions work.
  */
-+(MCIntent *) newActivityWithAssociatedViewNamed: (NSString*)viewName
-                                    inSectionNamed: (NSString*)sectionName
-                                      andAnimation: (UIViewAnimationOptions)animation;
++(MCIntent *) intentNewActivityWithAssociatedViewNamed: (NSString*)viewName
+                                        inSectionNamed: (NSString*)sectionName
+                                          andAnimation: (UIViewAnimationOptions)animation;
+
+
 
 
 #pragma mark - Navigation Intents
@@ -203,13 +208,13 @@
 #pragma mark - Push Methods
 
 
-/*            **---------------------------------------**
- *            **  Schema for "pushActivityFromHistory" **
- *            **---------------------------------------**
+/*            **---------------------------------------------**
+ *            **  Schema for "intentPushActivityFromHistory" **
+ *            **---------------------------------------------**
  *
  * Inputs in example :
- *    - pushActivityFromHistoryByPosition: 6
- * or - pushActivityFromHistoryByName: @"View22VC"
+ *    - intentPushActivityFromHistoryByPosition: 6
+ * or - intentPushActivityFromHistoryByName: @"View22VC"
  *
  *                                       +---------------------------+
  *                                       |                           |
@@ -238,30 +243,30 @@
  */
 
 /*!
- * @function pushActivityFromHistory
- * Push a specific Activity from the history stack to the top of the stack.
+ * @function intentPushActivityFromHistory
+ * Intent to Push a specific Activity from the history stack to the top of the stack.
  * @discussion Push means that when found, the Activity will be removed from its position in the stack and placed on top of the stack.
  * @param ptrActivity Pointer to the Activity to push on top of the stack.
  * @return New pointer to the Activity, make sur to replace old one with this one.
  */
-+(MCIntent *) pushActivityFromHistory: (MCActivity *) ptrToActivity;
++(MCIntent *) intentPushActivityFromHistory: (MCActivity *) ptrToActivity;
 
 /*!
- * @function pushActivityFromHistoryByPosition
- * Push an Activity to the top of the stack, given its position in the stack.
+ * @function intentPushActivityFromHistoryByPosition
+ * Intent to Push an Activity to the top of the stack, given its position in the stack.
  * @discussion Push means that when found, the Activity will be removed from its position in the stack and placed on top of the stack.
  * @param positionInStack Activity's position in the stack. Position 1 = last Activity in the history stack. Has to be > 0.
  */
-+(MCIntent *) pushActivityFromHistoryByPosition: (int) positionInStack;
++(MCIntent *) intentPushActivityFromHistoryByPosition: (int) positionInStack;
 
 /*!
- * @function pushActivityFromHistoryByName
- * Push an Activity to the top of the stack, given it's associated View's name.
+ * @function intentPushActivityFromHistoryByName
+ * Intent to Push an Activity to the top of the stack, given it's associated View's name.
  * @discussion Push means that when found, the Activity will be removed from its position in the stack and placed on top of the stack.
  * @discussion /!\ WARNING /!\ Because multiple Activities might have the same name, this method will find the first Activity matching the given name in the history stack and push it on top of the stack.
  * @param mcViewControllerName Name of the MCViewController (View) associated with the Activity to find.
  */
-+(MCIntent *) pushActivityFromHistoryByName: (NSString *) mcViewControllerName;
++(MCIntent *) intentPushActivityFromHistoryByName: (NSString *) mcViewControllerName;
 
 
 
@@ -270,13 +275,13 @@
 
 #pragma mark Pop to an Activity in History
 
-/*            **-------------------------------------**
- *            **  Schema for "popToActivityInHistory"  **
- *            **-------------------------------------**
+/*            **---------------------------------------------**
+ *            **  Schema for "intentPopToActivityInHistory"  **
+ *            **---------------------------------------------**
  *
  * Method used in example :
- *       - popToActivityInHistory: 6
- *   or  - popToActivityInHistory: @"View22VC"
+ *       - intentPopToActivityInHistoryByPosition: 6
+ *   or  - intentPopToActivityInHistoryByName: @"View22VC"
  *
  *                                       |
  *                                       v
@@ -300,37 +305,39 @@
  */
 
 /*!
- * @function popToActivityInHistory
- * Pop to a specific Activity in the history stack.
+ * @function intentPopToActivityInHistory
+ * Intent to Pop to a specific Activity in the history stack.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for.
  * @param ptrActivity Pointer to the Activity to pop to.
  * @return New pointer to the Activity, make sur to replace old one with this one.
  */
-+(MCIntent *) popToActivityInHistory: (MCActivity *) ptrToActivity;
++(MCIntent *) intentPopToActivityInHistory: (MCActivity *) ptrToActivity;
 
 /*!
- * @function popToActivityInHistoryByPosition
- * Pop to an Activity given its position in the stack.
+ * @function intentPopToActivityInHistoryByPosition
+ * Intent to Pop to an Activity given its position in the stack.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for.
+ *
  * @param positionInStack Activity's position in the stack. Position 1 = last Activity in the history stack. Has to be > 0.
  */
-+(MCIntent *) popToActivityInHistoryByPosition: (int) positionInStack;
++(MCIntent *) intentPopToActivityInHistoryByPosition: (int) positionInStack;
 
 /*!
- * @function popToActivityInHistoryByPositionLast
- * Pop to the last Activity in the history stack.
+ * @function intentPopToActivityInHistoryByPositionLast
+ * Intent to Pop to the last Activity in the history stack.
  * @discussion Same as using popToActivityInHistoryByPosition:1
  */
-+(MCIntent *) popToActivityInHistoryByPositionLast;
++(MCIntent *) intentPopToActivityInHistoryByPositionLast;
 
 /*!
- * @function popToActivityInHistoryByName
- * Pop to an Activity, given it's associated View's name.
+ * @function intentPopToActivityInHistoryByName
+ * Intent to Pop to an Activity, given it's associated View's name.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for.
  * @discussion /!\ WARNING /!\ Because multiple Activities might have the same name, this method will find the first Activity matching the given name in the history stack and pop to it.
- * @param mcViewControllerName Name of the MCViewController (View) associated with the Activity to find.
+ *
+ * @param mcViewControllerName Name of the View associated with the Activity to find. Can also be a Section with no Views.
  */
-+(MCIntent *) popToActivityInHistoryByName: (NSString *) mcViewControllerName;
++(MCIntent *) intentPopToActivityInHistoryByName: (NSString *) mcViewControllerName;
 
 
 
@@ -338,9 +345,9 @@
 #pragma mark Pop to Sections' Root Activity
 
 
-/*            **----------------------------------**
- *            **  Schema for "popToActivityRoot"  **
- *            **----------------------------------**
+/*            **----------------------------------------**
+ *            **  Schema for "intentPopToActivityRoot"  **
+ *            **----------------------------------------**
  *
  *
  * +--------+---------++---+---+---+---+---+---+---+---+---+---+---+
@@ -360,16 +367,15 @@
  * Activity position 0 --+
  *
  *
- * Infos : root section is Section1VC and the root View in this section is View11VC.
  *
  */
 
 /*!
- * @function popToActivityRoot
- * Pop to the root Activity in the history stack.
+ * @function intentPopToActivityRoot
+ * Intent to Pop to the root Activity in the history stack.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for (the root Activity here).
  */
-+(MCIntent *) popToActivityRoot;
++(MCIntent *) intentPopToActivityRoot;
 
 
 
@@ -400,18 +406,20 @@
  */
 
 /*!
- * @function popToActivityRootInSectionCurrent
- * Pop to the root Activity of the current section in the history stack.
+ * @function intentPopToActivityRootInSectionCurrent
+ * Intent to Pop to the root Activity of the current section in the history stack.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for (the root Activity of the current section here).
+ *
+ * If current Activity is already root, this intent will not be processed (processIntent will return a nil activity).
  */
-+(MCIntent *) popToActivityRootInSectionCurrent;
++(MCIntent *) intentPopToActivityRootInSectionCurrent;
 
 
 
 
-/*            **-----------------------------------------------**
- *            **  Schema for "popToActivityRootInSectionLast"  **
- *            **-----------------------------------------------**
+/*            **-----------------------------------------------------**
+ *            **  Schema for "intentPopToActivityRootInSectionLast"  **
+ *            **-----------------------------------------------------**
  *
  *
  * +--------+---------++---+---+---+---+---+---+---+---+---+---+---+
@@ -435,20 +443,20 @@
  */
 
 /*!
- * @function popToActivityRootInSectionLast
- * Pop to the root Activity of the last section in the history stack.
+ * @function intentPopToActivityRootInSectionLast
+ * Intent to Pop to the root Activity of the last section in the history stack.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for (the root Activity of the last section here).
  */
-+(MCIntent *) popToActivityRootInSectionLast;
++(MCIntent *) intentPopToActivityRootInSectionLast;
 
 
 
 
-/*            **------------------------------------------------**
- *            **  Schema for "popToActivityRootInSectionNamed"  **
- *            **------------------------------------------------**
+/*            **------------------------------------------------------**
+ *            **  Schema for "intentPopToActivityRootInSectionNamed"  **
+ *            **------------------------------------------------------**
  *
- *  Method used in example : "popToActivityRootInSectionNamed:@"Section1VC"
+ *  Method used in example : "intentPopToActivityRootInSectionNamed:@"Section1VC"
  *
  * +--------+---------++---+---+---+---+---+---+---+---+---+---+---+
  * |        |SectionVC|| 1 | 1 | 1 | 2 | 2 | 1 | 1 | 3 | 3 | 3 | 3 |
@@ -473,13 +481,13 @@
  */
 
 /*!
- * @function popToActivityRootInSectionNamed
- * Pop to the root Activity of the section with the given name.
+ * @function intentPopToActivityRootInSectionNamed
+ * Intent to Pop to the root Activity of the section with the given name.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for (the root Activity of the given section).
  * /!\ WARNING /!\ This method will find the first Activity in the stack that is related to the given Section name and then find the root in the Section. If the Section appears again previously in the stack, it will not be reached. See header comments for a visual representation of this warning.
  * @param mcSectionViewControllerName Name of the MCSectionViewController (Section) associated with the Activity to find.
  */
-+(MCIntent *) popToActivityRootInSectionNamed: (NSString *) mcSectionViewControllerName;
++(MCIntent *) intentPopToActivityRootInSectionNamed: (NSString *) mcSectionViewControllerName;
 
 
 
@@ -488,9 +496,9 @@
 
 
 
-/*            **-----------------------------------------------**
- *            **  Schema for "popToActivityLastInSectionLast"  **
- *            **-----------------------------------------------**
+/*            **-----------------------------------------------------**
+ *            **  Schema for "intentPopToActivityLastInSectionLast"  **
+ *            **-----------------------------------------------------**
  *
  * +--------+---------++---+---+---+---+---+---+---+---+---+---+---+
  * |        |SectionVC|| 1 | 1 | 1 | 2 | 2 | 1 | 1 | 3 | 3 | 3 | 3 |
@@ -513,20 +521,20 @@
  */
 
 /*!
- * @function popToActivityLastInSectionLast
- * Pop to the root Activity of the current section in the history stack.
+ * @function intentPopToActivityLastInSectionLast
+ * Intent to Pop to the root Activity of the current section in the history stack.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for (the root Activity of the current section).
  */
-+(MCIntent *) popToActivityLastInSectionLast;
++(MCIntent *) intentPopToActivityLastInSectionLast;
 
 
 
 
-/*            **------------------------------------------------**
- *            **  Schema for "popToActivityLastInSectionNamed"  **
- *            **------------------------------------------------**
+/*            **------------------------------------------------------**
+ *            **  Schema for "intentPopToActivityLastInSectionNamed"  **
+ *            **------------------------------------------------------**
  *
- * Method used in example : "popToActivityLastInSectionNamed:@"Section1VC"
+ * Method used in example : "intentPopToActivityLastInSectionNamed:@"Section1VC"
  *
  * +--------+---------++---+---+---+---+---+---+---+---+---+---+---+
  * |        |SectionVC|| 1 | 1 | 1 | 2 | 2 | 1 | 1 | 3 | 3 | 3 | 3 |
@@ -551,13 +559,13 @@
  */
 
 /*!
- * @function popToActivityLastInSectionNamed
- * Pop to the last Activity (first encountered Activity when rewinding the stack) of the section with the given name.
+ * @function intentPopToActivityLastInSectionNamed
+ * Intent to Pop to the last Activity (first encountered Activity when rewinding the stack) of the section with the given name.
  * @discussion Pop means removing one by one each Activity in the history stack until finding the one it is looking for.
  * /!\ WARNING /!\ This method will find the first Activity in the stack that is related to the given Section name. If the Section appears again previously in the stack, it will not be reached. See header comments for a visual representation of this warning.
  * @param mcSectionViewControllerName Name of the MCSectionViewController (Section) associated with the Activity to find.
  */
-+(MCIntent *) popToActivityLastInSectionNamed: (NSString *) mcSectionViewControllerName;
++(MCIntent *) intentPopToActivityLastInSectionNamed: (NSString *) mcSectionViewControllerName;
 
 
 

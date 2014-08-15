@@ -49,19 +49,19 @@
     [[MCViewManager sharedManager] setActivityStackSize:STACK_SIZE_UNLIMITED];
     
     
-    MCIntent *intent0 = [MCIntent newActivityWithAssociatedViewNamed:@"View10" inSectionNamed:@"Section1"];
-    MCIntent *intent1 = [MCIntent newActivityWithAssociatedViewNamed:@"View11" inSectionNamed:@"Section1"];
-    MCIntent *intent2 = [MCIntent newActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
-    MCIntent *intent3 = [MCIntent newActivityWithAssociatedViewNamed:@"View13" inSectionNamed:@"Section1"];
-    MCIntent *intent4 = [MCIntent newActivityWithAssociatedViewNamed:@"View21" inSectionNamed:@"Section2"];
-    MCIntent *intent5 = [MCIntent newActivityWithAssociatedViewNamed:@"View22" inSectionNamed:@"Section2"];
-    MCIntent *intent6 = [MCIntent newActivityWithAssociatedViewNamed:@"View21" inSectionNamed:@"Section2"];
-    MCIntent *intent7 = [MCIntent newActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
-    MCIntent *intent8 = [MCIntent newActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
-    MCIntent *intent9 = [MCIntent newActivityWithAssociatedViewNamed:@"View31" inSectionNamed:@"Section3"];
-    MCIntent *intent10 = [MCIntent newActivityWithAssociatedViewNamed:@"View32" inSectionNamed:@"Section3"];
-    MCIntent *intent11 = [MCIntent newActivityWithAssociatedViewNamed:@"View34" inSectionNamed:@"Section3"];
-    MCIntent *intent12 = [MCIntent newActivityWithAssociatedViewNamed:@"View33" inSectionNamed:@"Section3"];
+    MCIntent *intent0 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View10" inSectionNamed:@"Section1"];
+    MCIntent *intent1 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View11" inSectionNamed:@"Section1"];
+    MCIntent *intent2 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
+    MCIntent *intent3 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View13" inSectionNamed:@"Section1"];
+    MCIntent *intent4 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View21" inSectionNamed:@"Section2"];
+    MCIntent *intent5 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View22" inSectionNamed:@"Section2"];
+    MCIntent *intent6 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View21" inSectionNamed:@"Section2"];
+    MCIntent *intent7 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
+    MCIntent *intent8 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View12" inSectionNamed:@"Section1"];
+    MCIntent *intent9 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View31" inSectionNamed:@"Section3"];
+    MCIntent *intent10 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View32" inSectionNamed:@"Section3"];
+    MCIntent *intent11 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View34" inSectionNamed:@"Section3"];
+    MCIntent *intent12 = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View33" inSectionNamed:@"Section3"];
     
     
     _activity0 = [[MCViewManager sharedManager] processIntent:intent0];
@@ -131,7 +131,7 @@
 
 - (void)testNewActivityWithSectionNoView
 {
-    MCIntent *intentPush = [MCIntent newActivityWithAssociatedSectionNamed:@"Section1"];
+    MCIntent *intentPush = [MCIntent intentNewActivityWithAssociatedSectionNamed:@"Section1"];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     NSMutableArray *historyStack = [self getHistoryStack];
@@ -146,7 +146,7 @@
 
 - (void)testNewActivityWithSectionAndView
 {
-    MCIntent *intentPush = [MCIntent newActivityWithAssociatedViewNamed:@"View10" inSectionNamed:@"Section1"];
+    MCIntent *intentPush = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View10" inSectionNamed:@"Section1"];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     NSMutableArray *historyStack = [self getHistoryStack];
@@ -164,7 +164,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent pushActivityFromHistory:_activity4];
+    MCIntent *intentPush = [MCIntent intentPushActivityFromHistory:_activity4];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     
@@ -178,7 +178,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent pushActivityFromHistoryByPosition:8];
+    MCIntent *intentPush = [MCIntent intentPushActivityFromHistoryByPosition:8];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     
@@ -193,7 +193,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent pushActivityFromHistoryByName:@"View21"];
+    MCIntent *intentPush = [MCIntent intentPushActivityFromHistoryByName:@"View21"];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     XCTAssertTrue(historyStack.count == 13, @"HistoryStack Should contain 13");
@@ -210,7 +210,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityInHistory:_activity4];
+    MCIntent *intentPop = [MCIntent intentPopToActivityInHistory:_activity4];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 5, @"HistoryStack Should contain 5");
@@ -219,12 +219,12 @@
     XCTAssertFalse([historyStack containsObject:_activity5], @"Did not push correctly");
     
     // Pop to non-existing activity in stack
-    intentPop = [MCIntent popToActivityInHistory:_activity6];
+    intentPop = [MCIntent intentPopToActivityInHistory:_activity6];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Activity should be nil");
     
     // Pop to same activity
-    intentPop = [MCIntent popToActivityInHistory:_activity4];
+    intentPop = [MCIntent intentPopToActivityInHistory:_activity4];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Activity should be nil");
 }
@@ -233,7 +233,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent popToActivityInHistoryByPosition:8];
+    MCIntent *intentPush = [MCIntent intentPopToActivityInHistoryByPosition:8];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     XCTAssertTrue(historyStack.count == 5, @"HistoryStack Should contain 5");
@@ -242,7 +242,7 @@
     XCTAssertFalse([historyStack containsObject:_activity5], @"Did not push correctly");
     
     // Pop too many
-    intentPush = [MCIntent popToActivityInHistoryByPosition:5];
+    intentPush = [MCIntent intentPopToActivityInHistoryByPosition:5];
     activity = [[MCViewManager sharedManager] processIntent:intentPush];
     XCTAssertNil(activity, @"Activity should be nil");
 }
@@ -251,7 +251,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent popToActivityInHistoryByPositionLast];
+    MCIntent *intentPush = [MCIntent intentPopToActivityInHistoryByPositionLast];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     XCTAssertTrue(historyStack.count == 12, @"HistoryStack Should contain 12");
@@ -265,7 +265,7 @@
     NSMutableArray *historyStack = [self getHistoryStack];
     
     
-    MCIntent *intentPop = [MCIntent popToActivityInHistoryByName:@"View21"];
+    MCIntent *intentPop = [MCIntent intentPopToActivityInHistoryByName:@"View21"];
     
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertTrue(historyStack.count == 7, @"HistoryStack Should contain 7");
@@ -278,12 +278,12 @@
     XCTAssertNil(activity, @"Should be nil");
     
     // Pop to non-Existing View in stack
-    intentPop = [MCIntent popToActivityInHistoryByName:@"View31"];
+    intentPop = [MCIntent intentPopToActivityInHistoryByName:@"View31"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Should be nil");
     
     // Pop to non-Existing Section (without view) in stack
-    intentPop = [MCIntent popToActivityInHistoryByName:@"Section1"];
+    intentPop = [MCIntent intentPopToActivityInHistoryByName:@"Section1"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Should be nil");
     
@@ -291,7 +291,7 @@
     activity = [[MCActivity alloc] initWithAssociatedSectionNamed:@"Section4"];
     [historyStack insertObject:activity atIndex:3];
     // And pop to it
-    intentPop = [MCIntent popToActivityInHistoryByName:@"Section4"];
+    intentPop = [MCIntent intentPopToActivityInHistoryByName:@"Section4"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertTrue(historyStack.count == 4, @"HistoryStack Should contain 4");
     XCTAssertEqualObjects([historyStack objectAtIndex:2], _activity2, @"Did not push correctly.");
@@ -306,7 +306,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityRoot];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRoot];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 1, @"HistoryStack Should contain 1");
@@ -319,7 +319,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityRootInSectionCurrent];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRootInSectionCurrent];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 10, @"HistoryStack Should contain 10");
@@ -328,7 +328,7 @@
     XCTAssertFalse([historyStack containsObject:_activity10], @"Did not push correctly");
     
     // Re-doing it should return a Nil Activity
-    intentPop = [MCIntent popToActivityRootInSectionCurrent];
+    intentPop = [MCIntent intentPopToActivityRootInSectionCurrent];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertNil(activity, @"Activity should be nil at this point");
@@ -338,7 +338,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityRootInSectionLast];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRootInSectionLast];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 8, @"HistoryStack Should contain 10");
@@ -352,7 +352,7 @@
     NSMutableArray *historyStack = [self getHistoryStack];
     
     // TRY WITH SECTION 1
-    MCIntent *intentPop = [MCIntent popToActivityRootInSectionNamed:@"Section1"];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRootInSectionNamed:@"Section1"];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 8, @"HistoryStack Should contain 8");
@@ -362,7 +362,7 @@
     
     
     // TRY WITH SECTION 2
-    intentPop = [MCIntent popToActivityRootInSectionNamed:@"Section2"];
+    intentPop = [MCIntent intentPopToActivityRootInSectionNamed:@"Section2"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 5, @"HistoryStack Should contain 5");
@@ -378,7 +378,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityLastInSectionLast];
+    MCIntent *intentPop = [MCIntent intentPopToActivityLastInSectionLast];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 9, @"HistoryStack Should contain 9");
@@ -392,7 +392,7 @@
     NSMutableArray *historyStack = [self getHistoryStack];
     
     // TRY WITH SECTION 1
-    MCIntent *intentPop = [MCIntent popToActivityLastInSectionNamed:@"Section1"];
+    MCIntent *intentPop = [MCIntent intentPopToActivityLastInSectionNamed:@"Section1"];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 9, @"HistoryStack Should contain 8");
@@ -402,7 +402,7 @@
     
     
     // TRY WITH SECTION 2
-    intentPop = [MCIntent popToActivityLastInSectionNamed:@"Section2"];
+    intentPop = [MCIntent intentPopToActivityLastInSectionNamed:@"Section2"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 7, @"HistoryStack Should contain 5");
@@ -412,7 +412,7 @@
     
     
     // TRY WITH SECTION 2 AGAIN
-    intentPop = [MCIntent popToActivityLastInSectionNamed:@"Section2"];
+    intentPop = [MCIntent intentPopToActivityLastInSectionNamed:@"Section2"];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertNil(activity, @"Activity Should be Nil");

@@ -27,7 +27,8 @@
     [mainVC.view setFrame:[[UIScreen mainScreen] bounds]];
     // 1.3. Because you did not sub-class 
     
-    
+    MCIntent *intent = [MCIntent intentNewActivityWithAssociatedViewNamed:@"MCWelcomeVC" inSectionNamed:@"MCSectionLoginVC"];
+    [[MCViewManager sharedManager] processIntent:intent];
     
     [self.window makeKeyAndVisible];
     return YES;

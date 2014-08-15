@@ -206,7 +206,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent pushActivityFromHistory:_activity4];
+    MCIntent *intentPush = [MCIntent intentPushActivityFromHistory:_activity4];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     
@@ -220,7 +220,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent pushActivityFromHistoryByPosition:8];
+    MCIntent *intentPush = [MCIntent intentPushActivityFromHistoryByPosition:8];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     
@@ -238,7 +238,7 @@
     // Can't use :
     // MCIntent *intentPush = [MCIntent pushActivityFromHistoryByName:@"View21"];
     // because of NSAssert on the name. So to bypass the NSAssert :
-    MCIntent *intentPush = [MCIntent pushActivityFromHistoryByPosition:10];
+    MCIntent *intentPush = [MCIntent intentPushActivityFromHistoryByPosition:10];
     [intentPush setValue:@"View21" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     
@@ -259,7 +259,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityInHistory:_activity4];
+    MCIntent *intentPop = [MCIntent intentPopToActivityInHistory:_activity4];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 5, @"HistoryStack Should contain 5");
@@ -268,12 +268,12 @@
     XCTAssertFalse([historyStack containsObject:_activity5], @"Did not push correctly");
     
     // Pop to non-existing activity in stack
-    intentPop = [MCIntent popToActivityInHistory:_activity6];
+    intentPop = [MCIntent intentPopToActivityInHistory:_activity6];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Activity should be nil");
     
     // Pop to same activity
-    intentPop = [MCIntent popToActivityInHistory:_activity4];
+    intentPop = [MCIntent intentPopToActivityInHistory:_activity4];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     XCTAssertNil(activity, @"Activity should be nil");
 }
@@ -282,7 +282,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent popToActivityInHistoryByPosition:8];
+    MCIntent *intentPush = [MCIntent intentPopToActivityInHistoryByPosition:8];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     XCTAssertTrue(historyStack.count == 5, @"HistoryStack Should contain 5");
@@ -291,7 +291,7 @@
     XCTAssertFalse([historyStack containsObject:_activity5], @"Did not push correctly");
     
     // Pop too many
-    intentPush = [MCIntent popToActivityInHistoryByPosition:5];
+    intentPush = [MCIntent intentPopToActivityInHistoryByPosition:5];
     activity = [[MCViewManager sharedManager] processIntent:intentPush];
     XCTAssertNil(activity, @"Activity should be nil");
 }
@@ -300,7 +300,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPush = [MCIntent popToActivityInHistoryByPositionLast];
+    MCIntent *intentPush = [MCIntent intentPopToActivityInHistoryByPositionLast];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPush];
     
     XCTAssertTrue(historyStack.count == 12, @"HistoryStack Should contain 12");
@@ -316,7 +316,7 @@
     // Can't use :
     // MCIntent *intentPush = [MCIntent popActivityInHistoryByName:@"View21"];
     // because of NSAssert on the name. So to bypass the NSAssert :
-    MCIntent *intentPop = [MCIntent popToActivityInHistoryByPosition:10];
+    MCIntent *intentPop = [MCIntent intentPopToActivityInHistoryByPosition:10];
     [intentPop setValue:@"View21" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
@@ -358,7 +358,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityRoot];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRoot];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 1, @"HistoryStack Should contain 1");
@@ -371,7 +371,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityRootInSectionCurrent];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRootInSectionCurrent];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 10, @"HistoryStack Should contain 10");
@@ -380,7 +380,7 @@
     XCTAssertFalse([historyStack containsObject:_activity10], @"Did not push correctly");
     
     // Re-doing it should return a Nil Activity
-    intentPop = [MCIntent popToActivityRootInSectionCurrent];
+    intentPop = [MCIntent intentPopToActivityRootInSectionCurrent];
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertNil(activity, @"Activity should be nil at this point");
@@ -390,7 +390,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityRootInSectionLast];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRootInSectionLast];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 8, @"HistoryStack Should contain 10");
@@ -409,7 +409,7 @@
     // because of NSAssert on the name. So to bypass the NSAssert :
     
     // TRY WITH SECTION 1
-    MCIntent *intentPop = [MCIntent popToActivityRootInSectionLast];
+    MCIntent *intentPop = [MCIntent intentPopToActivityRootInSectionLast];
     [intentPop setValue:@"Section1" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
@@ -421,7 +421,7 @@
     
     
     // TRY WITH SECTION 2
-    intentPop = [MCIntent popToActivityRootInSectionLast];
+    intentPop = [MCIntent intentPopToActivityRootInSectionLast];
     [intentPop setValue:@"Section2" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
@@ -439,7 +439,7 @@
 {
     NSMutableArray *historyStack = [self getHistoryStack];
     
-    MCIntent *intentPop = [MCIntent popToActivityLastInSectionLast];
+    MCIntent *intentPop = [MCIntent intentPopToActivityLastInSectionLast];
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
     
     XCTAssertTrue(historyStack.count == 9, @"HistoryStack Should contain 9");
@@ -457,7 +457,7 @@
     // because of NSAssert on the name. So to bypass the NSAssert :
     
     // TRY WITH SECTION 1
-    MCIntent *intentPop = [MCIntent popToActivityLastInSectionLast];
+    MCIntent *intentPop = [MCIntent intentPopToActivityLastInSectionLast];
     [intentPop setValue:@"Section1" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     MCActivity *activity = [[MCViewManager sharedManager] processIntent:intentPop];
@@ -469,7 +469,7 @@
     
     
     // TRY WITH SECTION 2
-    intentPop = [MCIntent popToActivityLastInSectionLast];
+    intentPop = [MCIntent intentPopToActivityLastInSectionLast];
     [intentPop setValue:@"Section2" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     activity = [[MCViewManager sharedManager] processIntent:intentPop];
@@ -481,7 +481,7 @@
     
     
     // TRY WITH SECTION 2 AGAIN
-    intentPop = [MCIntent popToActivityLastInSectionLast];
+    intentPop = [MCIntent intentPopToActivityLastInSectionLast];
     [intentPop setValue:@"Section2" forKeyPath:@"stackRequestDescriptor.requestInfos"];
     
     activity = [[MCViewManager sharedManager] processIntent:intentPop];

@@ -25,6 +25,10 @@
 		F684BCE4199C1CBB00DD4B36 /* MCMainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F684BCE2199C1CBB00DD4B36 /* MCMainVC.xib */; };
 		F684BCE7199C1D9400DD4B36 /* MCAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F684BCE6199C1D9400DD4B36 /* MCAppModel.m */; };
 		F6F335AD199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F335AC199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m */; };
+		F6F335B1199D70320030CCC8 /* MCSectionLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F335AF199D70320030CCC8 /* MCSectionLoginVC.m */; };
+		F6F335B2199D70320030CCC8 /* MCSectionLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F335B0199D70320030CCC8 /* MCSectionLoginVC.xib */; };
+		F6F335B7199D708D0030CCC8 /* MCWelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F335B5199D708D0030CCC8 /* MCWelcomeVC.m */; };
+		F6F335B8199D708D0030CCC8 /* MCWelcomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F335B6199D708D0030CCC8 /* MCWelcomeVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,12 @@
 		F684BCE6199C1D9400DD4B36 /* MCAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCAppModel.m; sourceTree = "<group>"; };
 		F6F335A9199C405E0030CCC8 /* MCViewManagerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCViewManagerTests-Prefix.pch"; sourceTree = "<group>"; };
 		F6F335AC199C40E90030CCC8 /* MCViewManagerTestsAssertOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCViewManagerTestsAssertOn.m; sourceTree = "<group>"; };
+		F6F335AE199D70320030CCC8 /* MCSectionLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSectionLoginVC.h; path = ViewControllers/MCSectionLoginVC.h; sourceTree = "<group>"; };
+		F6F335AF199D70320030CCC8 /* MCSectionLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSectionLoginVC.m; path = ViewControllers/MCSectionLoginVC.m; sourceTree = "<group>"; };
+		F6F335B0199D70320030CCC8 /* MCSectionLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCSectionLoginVC.xib; path = ViewControllers/MCSectionLoginVC.xib; sourceTree = "<group>"; };
+		F6F335B4199D708D0030CCC8 /* MCWelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCWelcomeVC.h; path = ViewControllers/MCWelcomeVC.h; sourceTree = "<group>"; };
+		F6F335B5199D708D0030CCC8 /* MCWelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCWelcomeVC.m; path = ViewControllers/MCWelcomeVC.m; sourceTree = "<group>"; };
+		F6F335B6199D708D0030CCC8 /* MCWelcomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCWelcomeVC.xib; path = ViewControllers/MCWelcomeVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,11 +181,25 @@
 		F684BCDF199C1C8600DD4B36 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6F335B3199D706E0030CCC8 /* Login */,
 				F684BCE0199C1CBB00DD4B36 /* MCMainVC.h */,
 				F684BCE1199C1CBB00DD4B36 /* MCMainVC.m */,
 				F684BCE2199C1CBB00DD4B36 /* MCMainVC.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F6F335B3199D706E0030CCC8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F6F335AE199D70320030CCC8 /* MCSectionLoginVC.h */,
+				F6F335AF199D70320030CCC8 /* MCSectionLoginVC.m */,
+				F6F335B0199D70320030CCC8 /* MCSectionLoginVC.xib */,
+				F6F335B4199D708D0030CCC8 /* MCWelcomeVC.h */,
+				F6F335B5199D708D0030CCC8 /* MCWelcomeVC.m */,
+				F6F335B6199D708D0030CCC8 /* MCWelcomeVC.xib */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F335B8199D708D0030CCC8 /* MCWelcomeVC.xib in Resources */,
+				F6F335B2199D70320030CCC8 /* MCSectionLoginVC.xib in Resources */,
 				F684BCB9199C130E00DD4B36 /* InfoPlist.strings in Resources */,
 				F684BCC1199C130E00DD4B36 /* Images.xcassets in Resources */,
 				F684BCE4199C1CBB00DD4B36 /* MCMainVC.xib in Resources */,
@@ -344,6 +370,8 @@
 			files = (
 				F684BCBF199C130E00DD4B36 /* MCAppDelegate.m in Sources */,
 				F684BCE7199C1D9400DD4B36 /* MCAppModel.m in Sources */,
+				F6F335B1199D70320030CCC8 /* MCSectionLoginVC.m in Sources */,
+				F6F335B7199D708D0030CCC8 /* MCWelcomeVC.m in Sources */,
 				F684BCBB199C130E00DD4B36 /* main.m in Sources */,
 				F684BCE3199C1CBB00DD4B36 /* MCMainVC.m in Sources */,
 			);

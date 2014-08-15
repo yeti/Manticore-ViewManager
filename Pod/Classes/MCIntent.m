@@ -34,13 +34,13 @@
 #pragma mark Section without view
 
 
-+(MCIntent *) newActivityWithAssociatedSectionNamed: (NSString*)sectionName
++(MCIntent *) intentNewActivityWithAssociatedSectionNamed: (NSString*)sectionName
 {
     MCIntent* newActivity = [[MCIntent alloc] initWithAssociatedSectionNamed:sectionName];
     return newActivity;
 }
 
-+(MCIntent *) newActivityWithAssociatedSectionNamed: (NSString*)sectionName
++(MCIntent *) intentNewActivityWithAssociatedSectionNamed: (NSString*)sectionName
                                          andAnimation:(UIViewAnimationOptions)animation
 {
     MCIntent* newActivity = [[MCIntent alloc] initWithAssociatedSectionNamed:sectionName];
@@ -48,7 +48,7 @@
     return newActivity;
 }
 
-+(MCIntent *) newActivityWithAssociatedSectionNamed:(NSString*)sectionName
++(MCIntent *) intentNewActivityWithAssociatedSectionNamed:(NSString*)sectionName
                                      andActivityInfos:(NSMutableDictionary*)activityInfos
 {
     MCIntent* newActivity = [[MCIntent alloc] initWithAssociatedSectionNamed:sectionName
@@ -59,7 +59,7 @@
 
 #pragma mark Section with view
 
-+(MCIntent *) newActivityWithAssociatedViewNamed:(NSString*)viewName
++(MCIntent *) intentNewActivityWithAssociatedViewNamed:(NSString*)viewName
                                     inSectionNamed:(NSString*)sectionName
 {
     MCIntent* newActivity = [[MCIntent alloc] initWithAssociatedViewNamed:viewName
@@ -67,7 +67,7 @@
     return newActivity;
 }
 
-+(MCIntent *) newActivityWithAssociatedViewNamed:(NSString*)viewName
++(MCIntent *) intentNewActivityWithAssociatedViewNamed:(NSString*)viewName
                                   inSectionNamed:(NSString*)sectionName
                                     andAnimation:(UIViewAnimationOptions)animation
 {
@@ -80,7 +80,7 @@
 
 #pragma mark Dynamic Push Activities
 
-+(MCIntent *) pushActivityFromHistory: (MCActivity *) ptrToActivity
++(MCIntent *) intentPushActivityFromHistory: (MCActivity *) ptrToActivity
 {
     NSAssert(ptrToActivity != nil, @"%s : given pointer to activity is nil", __func__);
     
@@ -91,7 +91,7 @@
 }
 
 
-+(MCIntent *)pushActivityFromHistoryByPosition:(int)positionInStack
++(MCIntent *)intentPushActivityFromHistoryByPosition:(int)positionInStack
 {
     NSAssert((positionInStack > 0), @"%s : positionInStack can not be %i", __func__, positionInStack);
     
@@ -102,7 +102,7 @@
     return newActivity;
 }
 
-+(MCIntent *)pushActivityFromHistoryByName:(NSString *)mcViewControllerName
++(MCIntent *)intentPushActivityFromHistoryByName:(NSString *)mcViewControllerName
 {
     NSAssert(NSClassFromString(mcViewControllerName), @"%s : %@ does not exist.", __func__, mcViewControllerName);
     
@@ -115,7 +115,7 @@
 
 #pragma mark Dynamic Pop Activities in history
 
-+(MCIntent *)popToActivityInHistory:(MCActivity *)ptrToActivity
++(MCIntent *)intentPopToActivityInHistory:(MCActivity *)ptrToActivity
 {
     NSAssert(ptrToActivity != nil, @"%s : given pointer to activity is nil", __func__);
     
@@ -125,7 +125,7 @@
     return newActivity;
 }
 
-+(MCIntent *)popToActivityInHistoryByPosition:(int)positionInStack
++(MCIntent *)intentPopToActivityInHistoryByPosition:(int)positionInStack
 {
     NSAssert((positionInStack > 0), @"%s : positionInStack can not be %i", __func__, positionInStack);
     
@@ -137,7 +137,7 @@
 
 }
 
-+(MCIntent *)popToActivityInHistoryByPositionLast
++(MCIntent *)intentPopToActivityInHistoryByPositionLast
 {
     NSNumber *numberPosition = [NSNumber numberWithInt:1];
     MCIntent *newActivity = [[MCIntent alloc] initIntentRequestType:POP
@@ -146,7 +146,7 @@
     return newActivity;
 }
 
-+(MCIntent *)popToActivityInHistoryByName:(NSString *)mcViewControllerName
++(MCIntent *)intentPopToActivityInHistoryByName:(NSString *)mcViewControllerName
 {
     NSAssert(NSClassFromString(mcViewControllerName), @"%s : %@ does not exist.", __func__, mcViewControllerName);
     
@@ -162,7 +162,7 @@
 // popToActivityRoot is special as the number can not be known.
 // Therefore, it is assigned number : -1.
 //
-+(MCIntent *)popToActivityRoot
++(MCIntent *)intentPopToActivityRoot
 {
     NSNumber *numberPosition = [NSNumber numberWithInt:-1];
     MCIntent *newActivity = [[MCIntent alloc] initIntentRequestType:POP
@@ -171,7 +171,7 @@
     return newActivity;
 }
 
-+(MCIntent *)popToActivityRootInSectionCurrent
++(MCIntent *)intentPopToActivityRootInSectionCurrent
 {
     NSNumber *numberPosition = [NSNumber numberWithInt:0];
     MCIntent *newActivity = [[MCIntent alloc] initIntentRequestType:POP
@@ -180,7 +180,7 @@
     return newActivity;
 }
 
-+(MCIntent *)popToActivityRootInSectionLast
++(MCIntent *)intentPopToActivityRootInSectionLast
 {
     NSNumber *numberPosition = [NSNumber numberWithInt:1];
     MCIntent *newActivity = [[MCIntent alloc] initIntentRequestType:POP
@@ -189,7 +189,7 @@
     return newActivity;
 }
 
-+(MCIntent *)popToActivityRootInSectionNamed:(NSString *)mcSectionViewControllerName
++(MCIntent *)intentPopToActivityRootInSectionNamed:(NSString *)mcSectionViewControllerName
 {
     NSAssert(NSClassFromString(mcSectionViewControllerName), @"%s : %@ does not exist.", __func__, mcSectionViewControllerName);
     
@@ -202,7 +202,7 @@
 
 #pragma mark Dynamic Pop Activities to last in Section
 
-+(MCIntent *)popToActivityLastInSectionLast
++(MCIntent *)intentPopToActivityLastInSectionLast
 {
     // Section last is 1 (current = 0)
     NSNumber *numberPosition = [NSNumber numberWithInt:1];
@@ -212,7 +212,7 @@
     return newActivity;
 }
 
-+(MCIntent *)popToActivityLastInSectionNamed:(NSString *)mcSectionViewControllerName
++(MCIntent *)intentPopToActivityLastInSectionNamed:(NSString *)mcSectionViewControllerName
 {
     NSAssert(NSClassFromString(mcSectionViewControllerName), @"%s : %@ does not exist.", __func__, mcSectionViewControllerName);
     
