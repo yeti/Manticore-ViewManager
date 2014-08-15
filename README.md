@@ -41,14 +41,13 @@ Installation using CocoaPods is really easy. Add this line to your Podfile then 
 If you do not wish to use CocoaPods, you may always do it the old way : download/clone the project and copy the files located in Pod/Classes into your project.         
 Manticore-iosviewmanager does not require any external dependencies.    
 
-If you wish to install the Example project, clone or download MCViewManager in your computer, then `pod install` in the terminal under `MCViewManager/Example`.
+If you wish to install the Example project, clone or download this project to your computer, then `pod install` in the terminal under `MCViewManager/Example`.
 
 
 
-
-  
-  
-  
+        
+        
+        
 
 ##Features
 
@@ -141,8 +140,11 @@ MCIntent* intent = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View1VC"
 When developping an application, you will usually want to group the Views into Sections. If you are developing a regular application, try to group views that you feel are connected in a way, that would often navigate between each others. If you are developping a tabbed application, each tab will have it's own Section.   
 Think as Sections as "containers" for related Views.
 
-It is in no way a mandatory thing to have Views inside Sections, it is only a better design.    
-If you feel a View-Controller could not be linked to any other, then create a Section with no Views.
+Sections can also be shown without views in order to create single-level hierarchy,
+but it's a better design to create one Section with multiple Views.     
+If you feel a View-Controller could not be linked to any other, then create a Section with no Views. Then, be sure to never associate any View to this Section.
+
+
 
 As an example, if you were to develop a social app, you could want to group the Views like this :
 
@@ -158,16 +160,15 @@ The **Views** would be all the ViewControllers inside these Sections.
 Both Views and Sections are sub-classes of `UIViewController`.
 
 
-Sections can also be shown without views in order to create single-level hierarchy,
-but it's a better design to create one section with multiple views.
+
 
 
 
 
 #### Staying organized
 
-We highly suggest making macros for all your sections and views' names. You can do so in the appModel class if you have one, or in a separate header file.  
-This way, it will help to avoid making mistakes when making intents on these View-Controllers. Plus, if you ever rename a class, you only have to change the name on the macro instead of multiple times. Most of all... auto-completion is always nice ;)
+We highly suggest making macros for all your Sections and Views' names.       
+This way, it will help to avoid making mistakes when making intents on these Views. (Although MCViewManager will Assert errors). Plus, if you ever rename a class, you only have to change the name on the macro instead of multiple times. Most of all... auto-completion is always nice ;)
 
 ```objc
 // Define the Sections
@@ -176,55 +177,78 @@ This way, it will help to avoid making mistakes when making intents on these Vie
 #define SECTION_LAST    @"myLastSectionVC"
 
 // Define the Views
-#define VIEW_LOGIN      @"myLoginVC"
-#define VIEW_FEEDS      @"myFeedsVC"
-#define VIEW_PROFILE    @"myProfileVC"
+#define VIEW_1      @"View1VC"
+#define VIEW_2      @"View2VC"
+#define VIEW_3      @"View3VC"
 ```
 
-You can then process the intents using the macros :
+You can then create the intents using the macros :
 
 ```objc
-MCIntent* intent = [MCIntent intentWithSectionName:SECTION_FIRST andViewName:VIEW_LOGIN];
-
-[[MCViewModel sharedModel] processIntent:intent];
+MCIntent* intent = [MCIntent intentNewActivityWithAssociatedViewNamed:@"View_1" inSectionNamed:"Section_FIRST];
 ```
 
 
 
 ##Intents and activities
 
+####Activity
+
+An activity is a single, focused thing that the user can do. An activity may contain data, and is associated with a View-Controller. There are two cases possible :
+
+1. The Activity is associated with a View in a Section
+2. The Activity is only associated with a Section
 
 ###Making an intent
 
-When you want to switch from one View-Controller to another, you have to *make an intent*, using the **MCIntent class**. Do not instanciate intents directly, instead use the provided class methods. These provide many ways for creating intents to go to the right View-Controller (or to create it).   
+You have two reasons to make intents :
+
+1. Create a new Activity
+2. Find a previous Activity (an activity that has already been processed an is therefore on the stack, if stack enabled)
+
+When you want to switch to a View, you have to **make an intent**, using the **MCIntent class**. Do not instanciate intents directly, instead use the provided class methods.
     
-Here is a list of all possible intents :
+Here is a list of the most commom intents :
 
-1. Intent to create a new Section or View in Section. 
-   When intent is processed, the related View-Controller will be added to the history stack.   
-   
-   >| View1 | View2 | &nbsp;&nbsp;  &#10549;  
-   >| View1 | View2 | newView |  
+1. Create a new Activity
 
     ```objc
-    // You should avoid creating section without view
-    +(id) intentWithSectionName: (NSString*) name;
+    // Intent for a  new Activity with only an associated Section
+    +(MCIntent *) intentNewActivityWithAssociatedSectionNamed: (NSString*) sectionName;
 
-    // Most commonly used method. Creates a View, associated with a Section.
-    +(id) intentWithSectionName: (NSString*) sectionName andViewName: (NSString*) viewName;
+    // Intent for a new Activity associated with a View, in a Section
+    +(MCIntent *) intentNewActivityWithAssociatedViewNamed: (NSString*) viewName
+                                            inSectionNamed: (NSString*) sectionName;
     ```
 
-2. Intent to find an intent in the history stack and POP to it.
-   (go back in history stack until finding the one : popping others while parsing the stack)
-
-   >| View1 | **View2** | View3 | View4 |    
-   >| View1 | **View2** | View3 |  &nbsp;&nbsp;  &#10550;    
-   >| View1 | **View2**   &nbsp;&nbsp;  &#10550;     
+2. Intent to find an Activity in the activity Stack
 
     ```objc
-    // You should avoid creating section without view
-    +(id) pop: (NSString*) name;
+    // Intent to push a past activity
+    +(MCIntent *) intentPushActivityFromHistory: (MCActivity *) ptrToActivity;
+    +(MCIntent *) intentPushActivityFromHistoryByPosition: (int) positionInStack;
+    +(MCIntent *) intentPushActivityFromHistoryByName: (NSString *) mcViewControllerName;
+
+    // Intent to pop to a past activity
+    +(MCIntent *) intentPopToActivityInHistory: (MCActivity *) ptrToActivity;
+    +(MCIntent *) intentPopToActivityInHistoryByPosition: (int) positionInStack;
+    +(MCIntent *) intentPopToActivityInHistoryByPositionLast;
+    +(MCIntent *) intentPopToActivityInHistoryByName: (NSString *) mcViewControllerName;
+
+    +(MCIntent *) intentPopToActivityRoot;
+    
+    // These methods are useful when you have created Sections
+    // First (Root) in Section
+    +(MCIntent *) intentPopToActivityRootInSectionCurrent;
+    +(MCIntent *) intentPopToActivityRootInSectionLast;
+    +(MCIntent *) intentPopToActivityRootInSectionNamed: (NSString *) mcSectionViewControllerName;
+    // Last in Section
+    +(MCIntent *) intentPopToActivityLastInSectionLast;
+    +(MCIntent *) intentPopToActivityLastInSectionNamed: (NSString *) mcSectionViewControllerName;
+    
     ```
+
+
 
 ###Transition to the intent
 
