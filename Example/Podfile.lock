@@ -1,0 +1,14 @@
+PODS:
+  - Manticore-ViewManager (1.0.0)
+
+DEPENDENCIES:
+  - Manticore-ViewManager (from `../`)
+
+EXTERNAL SOURCES:
+  Manticore-ViewManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Manticore-ViewManager: 404417f41cc2af2121ca6052fd71e5be63fa5fa5
+
+COCOAPODS: 0.33.1

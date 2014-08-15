@@ -1,0 +1,6 @@
+platform :ios
+
+link_with ['Manticore-ViewManager', 'Manticore-ViewManagerTests']
+
+pod "Manticore-ViewManager", :path => "../"
+
