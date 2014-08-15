@@ -92,7 +92,11 @@
     UIViewController* vc = [[class alloc] initWithNibName:sectionOrViewName bundle:nil] ;
   
 #ifdef DEBUG
+<<<<<<< HEAD
     NSLog(@"[Manticore] : Created a view controller %@", [vc description]);
+=======
+    NSLog(@"Created a view controller %@", [vc description]);
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
 #endif
     
   return vc;

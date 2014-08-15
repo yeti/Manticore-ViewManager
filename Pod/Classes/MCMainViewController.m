@@ -176,7 +176,11 @@ void manticore_runOnMainQueueWithoutDeadlocking(void (^block)(void))
     
     // 1.
     MCSectionViewController* sectionVC =  (MCSectionViewController*)  [self loadOrCreateViewController:[activity associatedSectionName]];
+<<<<<<< HEAD
     NSAssert([sectionVC isKindOfClass:[MCSectionViewController class]], @"[Manticore] : Your section %@ should subclass MCSectionViewController", [sectionVC description]);
+=======
+    NSAssert([sectionVC isKindOfClass:[MCSectionViewController class]], @"Your section %@ should subclass MCSectionViewController", [sectionVC description]);
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
     
     // 2.
     MCViewController* vc = nil;
@@ -185,7 +189,11 @@ void manticore_runOnMainQueueWithoutDeadlocking(void (^block)(void))
         vc = (MCViewController*) [self loadOrCreateViewController:[activity associatedViewName]];
         
         // Add that it shouldn't a MCSectionViewController which subclasses MCViewController
+<<<<<<< HEAD
         NSAssert([vc isKindOfClass:[MCViewController class]], @"[Manticore] : Your view %@ should subclasses MCViewController", [vc description]);
+=======
+        NSAssert([vc isKindOfClass:[MCViewController class]], @"Your view %@ should subclasses MCViewController", [vc description]);
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
         
         /* edge case: everything we are transitioning to is the same as the previous, need to create a new view */
         // Same section same view
@@ -215,9 +223,15 @@ void manticore_runOnMainQueueWithoutDeadlocking(void (^block)(void))
         
 #ifdef DEBUG
         if (!_currentSectionVC.debugTag)
+<<<<<<< HEAD
             NSLog(@"[Manticore] : Subclass %@ of MCSectionViewController did not have its [super onPause:activity] called", _currentSectionVC);
         if (_currentSectionVC.currentViewVC && !_currentSectionVC.currentViewVC.debugTag)
             NSLog(@"[Manticore] : Subclass %@ of MCViewController did not have its [super onPause:activity] called", _currentSectionVC.currentViewVC);
+=======
+            NSLog(@"Subclass %@ of MCSectionViewController did not have its [super onPause:activity] called", _currentSectionVC);
+        if (_currentSectionVC.currentViewVC && !_currentSectionVC.currentViewVC.debugTag)
+            NSLog(@"Subclass %@ of MCViewController did not have its [super onPause:activity] called", _currentSectionVC.currentViewVC);
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
 #endif
     }
     
@@ -235,9 +249,15 @@ void manticore_runOnMainQueueWithoutDeadlocking(void (^block)(void))
     
 #ifdef DEBUG
     if (!_currentSectionVC.debugTag)
+<<<<<<< HEAD
         NSLog(@"[Manticore] : Subclass %@ of MCSectionViewController did not have its [super onResume:activity] called", _currentSectionVC);
     if (_currentSectionVC.currentViewVC && !_currentSectionVC.currentViewVC.debugTag)
         NSLog(@"[Manticore] : Subclass %@ of MCViewController did not have its [super onResume:activity] called", _currentSectionVC.currentViewVC);
+=======
+        NSLog(@"Subclass %@ of MCSectionViewController did not have its [super onResume:activity] called", _currentSectionVC);
+    if (_currentSectionVC.currentViewVC && !_currentSectionVC.currentViewVC.debugTag)
+        NSLog(@"Subclass %@ of MCViewController did not have its [super onResume:activity] called", _currentSectionVC.currentViewVC);
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
 #endif
 }
 
@@ -314,7 +334,11 @@ void manticore_runOnMainQueueWithoutDeadlocking(void (^block)(void))
         [_screenOverlayButton becomeFirstResponder];
     }else{
 #ifdef DEBUG
+<<<<<<< HEAD
         NSAssert(false, @"[Manticore] : Screen overlay not found: %@", [MCViewManager sharedManager].screenOverlay);
+=======
+        NSAssert(false, @"Screen overlay not found: %@", [MCViewManager sharedManager].screenOverlay);
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
 #endif
     }
     
@@ -340,7 +364,11 @@ void manticore_runOnMainQueueWithoutDeadlocking(void (^block)(void))
     {
         // create the view controller
         vc = (MCViewController*) [[MCViewManager sharedManager] createViewController:sectionOrViewName];
+<<<<<<< HEAD
         NSAssert(vc != nil, @"[Manticore] : VC should exist");
+=======
+        NSAssert(vc != nil, @"VC should exist");
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
         
         [vc onCreate];
         [_dictCacheView setObject:vc forKey:sectionOrViewName];
@@ -359,7 +387,11 @@ void manticore_runOnMainQueueWithoutDeadlocking(void (^block)(void))
     
     // create the view controller
     MCViewController* vc = (MCViewController*) [[MCViewManager sharedManager] createViewController:sectionOrViewName];
+<<<<<<< HEAD
     NSAssert(vc != nil, @"[Manticore] : VC should exist");
+=======
+    NSAssert(vc != nil, @"VC should exist");
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
     [vc onCreate];
     
     //

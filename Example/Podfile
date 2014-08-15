@@ -1,6 +1,12 @@
 platform :ios
 
+<<<<<<< HEAD
 link_with ['Manticore-ViewManager', 'Manticore-ViewManagerTests']
 
 pod "Manticore-ViewManager", :path => "../"
+=======
+link_with ['MCViewManager', 'MCViewManagerTests']
+
+pod "MCViewManager", :path => "../"
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
 

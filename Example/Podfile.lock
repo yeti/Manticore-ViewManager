@@ -1,4 +1,5 @@
 PODS:
+<<<<<<< HEAD
   - Manticore-ViewManager (1.0.0)
 
 DEPENDENCIES:
@@ -10,5 +11,18 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Manticore-ViewManager: 404417f41cc2af2121ca6052fd71e5be63fa5fa5
+=======
+  - MCViewManager (1.0.0)
+
+DEPENDENCIES:
+  - MCViewManager (from `../`)
+
+EXTERNAL SOURCES:
+  MCViewManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MCViewManager: 4bc0b6e2e8c9d48b516d247c055fd2d83dda171a
+>>>>>>> 78fbff696f0447590bd5e75bea97612229676a47
 
 COCOAPODS: 0.33.1
