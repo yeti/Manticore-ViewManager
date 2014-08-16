@@ -35,7 +35,7 @@ Here is a schema that shows Manticore View Manager's main functionality. What's 
 
 Installation using CocoaPods is really easy. Add this line to your Podfile then `pod install` :
 
-    pod 'MCViewManager', :git => 'https://github.com/YetiHQ/MCViewManager'
+    pod 'MCViewManager', :git => 'https://github.com/YetiHQ/Manticore-ViewManager'
 
 
 If you do not wish to use CocoaPods, you may always do it the old way : download/clone the project and copy the files located in Pod/Classes into your project.         
