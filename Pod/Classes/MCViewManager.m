@@ -400,7 +400,7 @@
     return activity;
 }
 
-#pragma mark Dealing with history stack when creating Activity
+#pragma mark History stack
 
 /*!
  * This method adds the acivity on top of the stack and then checks the stackSize and deal with adding/removing Activities from the stack if necessary.
@@ -432,6 +432,28 @@
     }
     
 
+}
+
+-(BOOL)isCurrentViewRootInSection
+{
+    if (_activityStack.count == 1)
+        return true;
+    
+    MCActivity *currentActivity = _activityStack.lastObject;
+    MCActivity *lastActivity = [_activityStack objectAtIndex:_activityStack.count -2];
+    
+    if (lastActivity)
+    {
+        NSString *currentViewsSection = currentActivity.associatedSectionName;
+        NSString *lastViewsSection = lastActivity.associatedSectionName;
+    
+        if ([currentViewsSection isEqualToString:lastViewsSection])
+            return false;
+        else
+            return true;
+    }
+    else
+        return true;
 }
 
 

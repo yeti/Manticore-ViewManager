@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MCNavigationView2">
+            <connections>
+                <outlet property="textInputField" destination="TOb-X8-dQ2" id="ZzT-qO-Rqb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type something..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TOb-X8-dQ2">
+                    <rect key="frame" x="20" y="68" width="189" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See how easy it is to transmit Data to another View" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="uom-nx-jmh">
+                    <rect key="frame" x="0.0" y="10" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="4IY-ib-rBi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWO-LZ-am3">
+                    <rect key="frame" x="229" y="68" width="71" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="71" id="blu-e6-EDC"/>
+                        <constraint firstAttribute="height" constant="30" id="p1E-4k-FIr"/>
+                    </constraints>
+                    <state key="normal" title="Transmit !!">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="transmitButtonPressed:" destination="-1" eventType="touchUpInside" id="VZH-gE-7f3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="TOb-X8-dQ2" firstAttribute="top" secondItem="uom-nx-jmh" secondAttribute="bottom" constant="8" id="2ch-9b-vhJ"/>
+                <constraint firstItem="RWO-LZ-am3" firstAttribute="top" secondItem="uom-nx-jmh" secondAttribute="bottom" constant="8" id="4ml-zO-38H"/>
+                <constraint firstItem="uom-nx-jmh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BY5-oe-gsU"/>
+                <constraint firstAttribute="trailing" secondItem="RWO-LZ-am3" secondAttribute="trailing" constant="20" id="Q1s-G3-QG1"/>
+                <constraint firstItem="RWO-LZ-am3" firstAttribute="leading" secondItem="TOb-X8-dQ2" secondAttribute="trailing" constant="20" id="fIC-Wa-qIa"/>
+                <constraint firstItem="uom-nx-jmh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="kyX-EW-5Dw"/>
+                <constraint firstItem="TOb-X8-dQ2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="mmI-VF-vLv"/>
+                <constraint firstAttribute="trailing" secondItem="uom-nx-jmh" secondAttribute="trailing" id="oX0-xI-s8X"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

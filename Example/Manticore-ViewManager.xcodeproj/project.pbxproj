@@ -25,10 +25,16 @@
 		F6929C1C199E91C200774C30 /* MCAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F6929C1B199E91C200774C30 /* MCAppModel.m */; };
 		F6929C27199E91CD00774C30 /* MCMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F6929C1F199E91CD00774C30 /* MCMainVC.m */; };
 		F6929C28199E91CD00774C30 /* MCMainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6929C20199E91CD00774C30 /* MCMainVC.xib */; };
-		F6929C29199E91CD00774C30 /* MCSectionLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F6929C22199E91CD00774C30 /* MCSectionLoginVC.m */; };
-		F6929C2A199E91CD00774C30 /* MCSectionLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6929C23199E91CD00774C30 /* MCSectionLoginVC.xib */; };
-		F6929C2B199E91CD00774C30 /* MCWelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F6929C25199E91CD00774C30 /* MCWelcomeVC.m */; };
-		F6929C2C199E91CD00774C30 /* MCWelcomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6929C26199E91CD00774C30 /* MCWelcomeVC.xib */; };
+		F6C15FCA199E9F990072977D /* MCNavigationExampleSection.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FC2199E9F990072977D /* MCNavigationExampleSection.m */; };
+		F6C15FCB199E9F990072977D /* MCNavigationExampleSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FC3199E9F990072977D /* MCNavigationExampleSection.xib */; };
+		F6C15FCC199E9F990072977D /* MCNavigationView1.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FC5199E9F990072977D /* MCNavigationView1.m */; };
+		F6C15FCD199E9F990072977D /* MCNavigationView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FC6199E9F990072977D /* MCNavigationView1.xib */; };
+		F6C15FCE199E9F990072977D /* MCNavigationView2.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FC8199E9F990072977D /* MCNavigationView2.m */; };
+		F6C15FCF199E9F990072977D /* MCNavigationView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FC9199E9F990072977D /* MCNavigationView2.xib */; };
+		F6C15FD3199EA0470072977D /* MCNavigationView3.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FD1199EA0470072977D /* MCNavigationView3.m */; };
+		F6C15FD4199EA0470072977D /* MCNavigationView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FD2199EA0470072977D /* MCNavigationView3.xib */; };
+		F6C15FD8199EA0640072977D /* MCNavigationView4.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FD6199EA0640072977D /* MCNavigationView4.m */; };
+		F6C15FD9199EA0640072977D /* MCNavigationView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FD7199EA0640072977D /* MCNavigationView4.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,13 +74,22 @@
 		F6929C1E199E91CD00774C30 /* MCMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMainVC.h; sourceTree = "<group>"; };
 		F6929C1F199E91CD00774C30 /* MCMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMainVC.m; sourceTree = "<group>"; };
 		F6929C20199E91CD00774C30 /* MCMainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCMainVC.xib; sourceTree = "<group>"; };
-		F6929C21199E91CD00774C30 /* MCSectionLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSectionLoginVC.h; sourceTree = "<group>"; };
-		F6929C22199E91CD00774C30 /* MCSectionLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSectionLoginVC.m; sourceTree = "<group>"; };
-		F6929C23199E91CD00774C30 /* MCSectionLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCSectionLoginVC.xib; sourceTree = "<group>"; };
-		F6929C24199E91CD00774C30 /* MCWelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCWelcomeVC.h; sourceTree = "<group>"; };
-		F6929C25199E91CD00774C30 /* MCWelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCWelcomeVC.m; sourceTree = "<group>"; };
-		F6929C26199E91CD00774C30 /* MCWelcomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCWelcomeVC.xib; sourceTree = "<group>"; };
 		F6929C2D199E932300774C30 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F6C15FC1199E9F990072977D /* MCNavigationExampleSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCNavigationExampleSection.h; path = Example1/MCNavigationExampleSection.h; sourceTree = "<group>"; };
+		F6C15FC2199E9F990072977D /* MCNavigationExampleSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCNavigationExampleSection.m; path = Example1/MCNavigationExampleSection.m; sourceTree = "<group>"; };
+		F6C15FC3199E9F990072977D /* MCNavigationExampleSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCNavigationExampleSection.xib; path = Example1/MCNavigationExampleSection.xib; sourceTree = "<group>"; };
+		F6C15FC4199E9F990072977D /* MCNavigationView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCNavigationView1.h; path = Example1/MCNavigationView1.h; sourceTree = "<group>"; };
+		F6C15FC5199E9F990072977D /* MCNavigationView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCNavigationView1.m; path = Example1/MCNavigationView1.m; sourceTree = "<group>"; };
+		F6C15FC6199E9F990072977D /* MCNavigationView1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCNavigationView1.xib; path = Example1/MCNavigationView1.xib; sourceTree = "<group>"; };
+		F6C15FC7199E9F990072977D /* MCNavigationView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCNavigationView2.h; path = Example1/MCNavigationView2.h; sourceTree = "<group>"; };
+		F6C15FC8199E9F990072977D /* MCNavigationView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCNavigationView2.m; path = Example1/MCNavigationView2.m; sourceTree = "<group>"; };
+		F6C15FC9199E9F990072977D /* MCNavigationView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCNavigationView2.xib; path = Example1/MCNavigationView2.xib; sourceTree = "<group>"; };
+		F6C15FD0199EA0470072977D /* MCNavigationView3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCNavigationView3.h; path = Example1/MCNavigationView3.h; sourceTree = "<group>"; };
+		F6C15FD1199EA0470072977D /* MCNavigationView3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCNavigationView3.m; path = Example1/MCNavigationView3.m; sourceTree = "<group>"; };
+		F6C15FD2199EA0470072977D /* MCNavigationView3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCNavigationView3.xib; path = Example1/MCNavigationView3.xib; sourceTree = "<group>"; };
+		F6C15FD5199EA0640072977D /* MCNavigationView4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCNavigationView4.h; path = Example1/MCNavigationView4.h; sourceTree = "<group>"; };
+		F6C15FD6199EA0640072977D /* MCNavigationView4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCNavigationView4.m; path = Example1/MCNavigationView4.m; sourceTree = "<group>"; };
+		F6C15FD7199EA0640072977D /* MCNavigationView4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCNavigationView4.xib; path = Example1/MCNavigationView4.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,14 +211,31 @@
 				F6929C1E199E91CD00774C30 /* MCMainVC.h */,
 				F6929C1F199E91CD00774C30 /* MCMainVC.m */,
 				F6929C20199E91CD00774C30 /* MCMainVC.xib */,
-				F6929C21199E91CD00774C30 /* MCSectionLoginVC.h */,
-				F6929C22199E91CD00774C30 /* MCSectionLoginVC.m */,
-				F6929C23199E91CD00774C30 /* MCSectionLoginVC.xib */,
-				F6929C24199E91CD00774C30 /* MCWelcomeVC.h */,
-				F6929C25199E91CD00774C30 /* MCWelcomeVC.m */,
-				F6929C26199E91CD00774C30 /* MCWelcomeVC.xib */,
+				F6C15FBB199E9E4C0072977D /* Example1 */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F6C15FBB199E9E4C0072977D /* Example1 */ = {
+			isa = PBXGroup;
+			children = (
+				F6C15FC1199E9F990072977D /* MCNavigationExampleSection.h */,
+				F6C15FC2199E9F990072977D /* MCNavigationExampleSection.m */,
+				F6C15FC3199E9F990072977D /* MCNavigationExampleSection.xib */,
+				F6C15FC4199E9F990072977D /* MCNavigationView1.h */,
+				F6C15FC5199E9F990072977D /* MCNavigationView1.m */,
+				F6C15FC6199E9F990072977D /* MCNavigationView1.xib */,
+				F6C15FC7199E9F990072977D /* MCNavigationView2.h */,
+				F6C15FC8199E9F990072977D /* MCNavigationView2.m */,
+				F6C15FC9199E9F990072977D /* MCNavigationView2.xib */,
+				F6C15FD0199EA0470072977D /* MCNavigationView3.h */,
+				F6C15FD1199EA0470072977D /* MCNavigationView3.m */,
+				F6C15FD2199EA0470072977D /* MCNavigationView3.xib */,
+				F6C15FD5199EA0640072977D /* MCNavigationView4.h */,
+				F6C15FD6199EA0640072977D /* MCNavigationView4.m */,
+				F6C15FD7199EA0640072977D /* MCNavigationView4.xib */,
+			);
+			name = Example1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +318,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6929C2C199E91CD00774C30 /* MCWelcomeVC.xib in Resources */,
-				F6929C2A199E91CD00774C30 /* MCSectionLoginVC.xib in Resources */,
+				F6C15FCD199E9F990072977D /* MCNavigationView1.xib in Resources */,
+				F6C15FD4199EA0470072977D /* MCNavigationView3.xib in Resources */,
+				F6C15FCB199E9F990072977D /* MCNavigationExampleSection.xib in Resources */,
+				F6C15FCF199E9F990072977D /* MCNavigationView2.xib in Resources */,
 				F6929BEF199E8C8B00774C30 /* InfoPlist.strings in Resources */,
+				F6C15FD9199EA0640072977D /* MCNavigationView4.xib in Resources */,
 				F6929BF7199E8C8B00774C30 /* Images.xcassets in Resources */,
 				F6929C28199E91CD00774C30 /* MCMainVC.xib in Resources */,
 			);
@@ -374,10 +409,13 @@
 			files = (
 				F6929BF5199E8C8B00774C30 /* MCAppDelegate.m in Sources */,
 				F6929C1C199E91C200774C30 /* MCAppModel.m in Sources */,
-				F6929C29199E91CD00774C30 /* MCSectionLoginVC.m in Sources */,
-				F6929C2B199E91CD00774C30 /* MCWelcomeVC.m in Sources */,
+				F6C15FCA199E9F990072977D /* MCNavigationExampleSection.m in Sources */,
 				F6929BF1199E8C8B00774C30 /* main.m in Sources */,
+				F6C15FD3199EA0470072977D /* MCNavigationView3.m in Sources */,
+				F6C15FCE199E9F990072977D /* MCNavigationView2.m in Sources */,
 				F6929C27199E91CD00774C30 /* MCMainVC.m in Sources */,
+				F6C15FCC199E9F990072977D /* MCNavigationView1.m in Sources */,
+				F6C15FD8199EA0640072977D /* MCNavigationView4.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

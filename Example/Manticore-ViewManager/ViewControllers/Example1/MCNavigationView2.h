@@ -8,6 +8,6 @@
 
 #import "MCViewController.h"
 
-@interface MCWelcomeVC : MCViewController
+@interface MCNavigationView2 : MCViewController
 
 @end

@@ -8,6 +8,7 @@
 
 #import "MCMainVC.h"
 
+
 @interface MCMainVC ()
 
 @end
@@ -33,6 +34,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)welcomeButtonPressed:(id)sender
+{
+    MCIntent *intent = [MCIntent intentNewActivityWithAssociatedViewNamed:VIEW_NAVIGATION_1     inSectionNamed:SECTION_1_NAVIGATION];
+    [[MCViewManager sharedManager] processIntent:intent];
 }
 
 @end

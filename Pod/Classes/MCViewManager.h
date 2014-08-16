@@ -105,6 +105,15 @@
 
 
 /*!
+ * Use this method to test if the current View (the View associated with the current Activity) is root in the stack. Are there are no Activities before or if the last Activity's View is not in the same Section as the current Activity's associated View, this method will return false.
+ *
+ * You will usually want to implement this method in a Section containing multiple Views, when displaying a NavigationView, to test if you should display or not the "Back Button"
+ *
+ */
+- (BOOL)isCurrentViewRootInSection;
+
+
+/*!
  * Called to clear all activities from the history stack.
  *
  * This method does not clear the View cache. See "clearViewCache".

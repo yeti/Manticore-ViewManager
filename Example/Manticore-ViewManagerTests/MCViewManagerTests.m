@@ -420,7 +420,27 @@
     XCTAssertNil(activity, @"Activity Should be Nil");
 }
 
+#pragma mark - Other methods
 
+-(NSUInteger)testIsCurrentViewRootInSection
+{
+    XCTAssertFalse([[MCViewManager sharedManager] isCurrentViewRootInSection], @"Should not be root in Section");
+    
+    // Pop to activity root and make sure it's root
+    MCIntent *intent = [MCIntent intentPopToActivityRootInSectionCurrent];
+    [[MCViewManager sharedManager] processIntent:intent];
+    XCTAssertTrue([[MCViewManager sharedManager] isCurrentViewRootInSection], @"Should be root in Section");
+    
+    // Pop to not root
+    intent = [MCIntent intentPopToActivityLastInSectionLast];
+    [[MCViewManager sharedManager] processIntent:intent];
+    XCTAssertFalse([[MCViewManager sharedManager] isCurrentViewRootInSection], @"Should not be root in Section");
+    
+    // Pop to root
+    intent = [MCIntent intentPopToActivityRoot];
+    [[MCViewManager sharedManager] processIntent:intent];
+    XCTAssertTrue([[MCViewManager sharedManager] isCurrentViewRootInSection], @"Should be root in Section");
+}
 
 
 @end

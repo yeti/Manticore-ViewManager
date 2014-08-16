@@ -8,6 +8,6 @@
 
 #import "MCSectionViewController.h"
 
-@interface MCSectionLoginVC : MCSectionViewController
+@interface MCNavigationExampleSection : MCSectionViewController
 
 @end
