@@ -42,4 +42,10 @@
     [[MCViewManager sharedManager] processIntent:intent];
 }
 
+
+- (IBAction)tabExamplePressed:(id)sender
+{
+    MCIntent *intent = [MCIntent intentNewActivityWithAssociatedViewNamed:VIEW_1_Tab1 inSectionNamed:SECTION_Tab1];
+    [[MCViewManager sharedManager] processIntent:intent];
+}
 @end

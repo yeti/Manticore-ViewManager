@@ -15,13 +15,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myg-S1-StK">
-                    <rect key="frame" x="129" y="269" width="63" height="30"/>
+                    <rect key="frame" x="78" y="162" width="164" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Welcome">
+                    <state key="normal" title="Example  1 - Navigation">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="welcomeButtonPressed:" destination="-1" eventType="touchUpInside" id="RBr-qR-9Em"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUJ-wc-Lyu">
+                    <rect key="frame" x="101" y="235" width="119" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Example 2 - Tabs">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tabExamplePressed:" destination="-1" eventType="touchUpInside" id="LNn-dW-YgL"/>
                     </connections>
                 </button>
             </subviews>

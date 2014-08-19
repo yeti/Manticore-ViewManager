@@ -35,6 +35,18 @@
 		F6C15FD4199EA0470072977D /* MCNavigationView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FD2199EA0470072977D /* MCNavigationView3.xib */; };
 		F6C15FD8199EA0640072977D /* MCNavigationView4.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FD6199EA0640072977D /* MCNavigationView4.m */; };
 		F6C15FD9199EA0640072977D /* MCNavigationView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FD7199EA0640072977D /* MCNavigationView4.xib */; };
+		F6C15FDE19A26D140072977D /* MCSection1.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FDC19A26D140072977D /* MCSection1.m */; };
+		F6C15FDF19A26D140072977D /* MCSection1.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FDD19A26D140072977D /* MCSection1.xib */; };
+		F6C15FE319A26D2C0072977D /* MCSection2.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FE119A26D2C0072977D /* MCSection2.m */; };
+		F6C15FE419A26D2C0072977D /* MCSection2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FE219A26D2C0072977D /* MCSection2.xib */; };
+		F6C15FE819A26D8B0072977D /* MCView1Sect1.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FE619A26D8B0072977D /* MCView1Sect1.m */; };
+		F6C15FE919A26D8B0072977D /* MCView1Sect1.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FE719A26D8B0072977D /* MCView1Sect1.xib */; };
+		F6C15FED19A26DA70072977D /* MCView1Sect2.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FEB19A26DA70072977D /* MCView1Sect2.m */; };
+		F6C15FEE19A26DA70072977D /* MCView1Sect2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FEC19A26DA70072977D /* MCView1Sect2.xib */; };
+		F6C15FF219A270A20072977D /* MCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FF019A270A20072977D /* MCTabBar.m */; };
+		F6C15FF319A270A20072977D /* MCTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FF119A270A20072977D /* MCTabBar.xib */; };
+		F6C15FFC19A3BB850072977D /* MCView2Sect1.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C15FFA19A3BB850072977D /* MCView2Sect1.m */; };
+		F6C15FFD19A3BB850072977D /* MCView2Sect1.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C15FFB19A3BB850072977D /* MCView2Sect1.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +102,24 @@
 		F6C15FD5199EA0640072977D /* MCNavigationView4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCNavigationView4.h; path = Example1/MCNavigationView4.h; sourceTree = "<group>"; };
 		F6C15FD6199EA0640072977D /* MCNavigationView4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCNavigationView4.m; path = Example1/MCNavigationView4.m; sourceTree = "<group>"; };
 		F6C15FD7199EA0640072977D /* MCNavigationView4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCNavigationView4.xib; path = Example1/MCNavigationView4.xib; sourceTree = "<group>"; };
+		F6C15FDB19A26D140072977D /* MCSection1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSection1.h; path = "Example2-Tabs/MCSection1.h"; sourceTree = "<group>"; };
+		F6C15FDC19A26D140072977D /* MCSection1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSection1.m; path = "Example2-Tabs/MCSection1.m"; sourceTree = "<group>"; };
+		F6C15FDD19A26D140072977D /* MCSection1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCSection1.xib; path = "Example2-Tabs/MCSection1.xib"; sourceTree = "<group>"; };
+		F6C15FE019A26D2C0072977D /* MCSection2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSection2.h; path = "Example2-Tabs/MCSection2.h"; sourceTree = "<group>"; };
+		F6C15FE119A26D2C0072977D /* MCSection2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSection2.m; path = "Example2-Tabs/MCSection2.m"; sourceTree = "<group>"; };
+		F6C15FE219A26D2C0072977D /* MCSection2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCSection2.xib; path = "Example2-Tabs/MCSection2.xib"; sourceTree = "<group>"; };
+		F6C15FE519A26D8B0072977D /* MCView1Sect1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCView1Sect1.h; path = "Example2-Tabs/MCView1Sect1.h"; sourceTree = "<group>"; };
+		F6C15FE619A26D8B0072977D /* MCView1Sect1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCView1Sect1.m; path = "Example2-Tabs/MCView1Sect1.m"; sourceTree = "<group>"; };
+		F6C15FE719A26D8B0072977D /* MCView1Sect1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCView1Sect1.xib; path = "Example2-Tabs/MCView1Sect1.xib"; sourceTree = "<group>"; };
+		F6C15FEA19A26DA70072977D /* MCView1Sect2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCView1Sect2.h; path = "Example2-Tabs/MCView1Sect2.h"; sourceTree = "<group>"; };
+		F6C15FEB19A26DA70072977D /* MCView1Sect2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCView1Sect2.m; path = "Example2-Tabs/MCView1Sect2.m"; sourceTree = "<group>"; };
+		F6C15FEC19A26DA70072977D /* MCView1Sect2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCView1Sect2.xib; path = "Example2-Tabs/MCView1Sect2.xib"; sourceTree = "<group>"; };
+		F6C15FEF19A270A20072977D /* MCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCTabBar.h; path = "Example2-Tabs/MCTabBar.h"; sourceTree = "<group>"; };
+		F6C15FF019A270A20072977D /* MCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCTabBar.m; path = "Example2-Tabs/MCTabBar.m"; sourceTree = "<group>"; };
+		F6C15FF119A270A20072977D /* MCTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCTabBar.xib; path = "Example2-Tabs/MCTabBar.xib"; sourceTree = "<group>"; };
+		F6C15FF919A3BB850072977D /* MCView2Sect1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCView2Sect1.h; path = "Example2-Tabs/MCView2Sect1.h"; sourceTree = "<group>"; };
+		F6C15FFA19A3BB850072977D /* MCView2Sect1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCView2Sect1.m; path = "Example2-Tabs/MCView2Sect1.m"; sourceTree = "<group>"; };
+		F6C15FFB19A3BB850072977D /* MCView2Sect1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCView2Sect1.xib; path = "Example2-Tabs/MCView2Sect1.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,12 +241,13 @@
 				F6929C1E199E91CD00774C30 /* MCMainVC.h */,
 				F6929C1F199E91CD00774C30 /* MCMainVC.m */,
 				F6929C20199E91CD00774C30 /* MCMainVC.xib */,
-				F6C15FBB199E9E4C0072977D /* Example1 */,
+				F6C15FBB199E9E4C0072977D /* Example1-Navigation */,
+				F6C15FDA19A26C960072977D /* Example2-TabApp */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		F6C15FBB199E9E4C0072977D /* Example1 */ = {
+		F6C15FBB199E9E4C0072977D /* Example1-Navigation */ = {
 			isa = PBXGroup;
 			children = (
 				F6C15FC1199E9F990072977D /* MCNavigationExampleSection.h */,
@@ -235,7 +266,32 @@
 				F6C15FD6199EA0640072977D /* MCNavigationView4.m */,
 				F6C15FD7199EA0640072977D /* MCNavigationView4.xib */,
 			);
-			name = Example1;
+			name = "Example1-Navigation";
+			sourceTree = "<group>";
+		};
+		F6C15FDA19A26C960072977D /* Example2-TabApp */ = {
+			isa = PBXGroup;
+			children = (
+				F6C15FEF19A270A20072977D /* MCTabBar.h */,
+				F6C15FF019A270A20072977D /* MCTabBar.m */,
+				F6C15FF119A270A20072977D /* MCTabBar.xib */,
+				F6C15FDB19A26D140072977D /* MCSection1.h */,
+				F6C15FDC19A26D140072977D /* MCSection1.m */,
+				F6C15FDD19A26D140072977D /* MCSection1.xib */,
+				F6C15FE519A26D8B0072977D /* MCView1Sect1.h */,
+				F6C15FE619A26D8B0072977D /* MCView1Sect1.m */,
+				F6C15FE719A26D8B0072977D /* MCView1Sect1.xib */,
+				F6C15FF919A3BB850072977D /* MCView2Sect1.h */,
+				F6C15FFA19A3BB850072977D /* MCView2Sect1.m */,
+				F6C15FFB19A3BB850072977D /* MCView2Sect1.xib */,
+				F6C15FE019A26D2C0072977D /* MCSection2.h */,
+				F6C15FE119A26D2C0072977D /* MCSection2.m */,
+				F6C15FE219A26D2C0072977D /* MCSection2.xib */,
+				F6C15FEA19A26DA70072977D /* MCView1Sect2.h */,
+				F6C15FEB19A26DA70072977D /* MCView1Sect2.m */,
+				F6C15FEC19A26DA70072977D /* MCView1Sect2.xib */,
+			);
+			name = "Example2-TabApp";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,10 +375,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6C15FCD199E9F990072977D /* MCNavigationView1.xib in Resources */,
+				F6C15FDF19A26D140072977D /* MCSection1.xib in Resources */,
+				F6C15FEE19A26DA70072977D /* MCView1Sect2.xib in Resources */,
+				F6C15FF319A270A20072977D /* MCTabBar.xib in Resources */,
 				F6C15FD4199EA0470072977D /* MCNavigationView3.xib in Resources */,
+				F6C15FE919A26D8B0072977D /* MCView1Sect1.xib in Resources */,
 				F6C15FCB199E9F990072977D /* MCNavigationExampleSection.xib in Resources */,
 				F6C15FCF199E9F990072977D /* MCNavigationView2.xib in Resources */,
+				F6C15FFD19A3BB850072977D /* MCView2Sect1.xib in Resources */,
 				F6929BEF199E8C8B00774C30 /* InfoPlist.strings in Resources */,
+				F6C15FE419A26D2C0072977D /* MCSection2.xib in Resources */,
 				F6C15FD9199EA0640072977D /* MCNavigationView4.xib in Resources */,
 				F6929BF7199E8C8B00774C30 /* Images.xcassets in Resources */,
 				F6929C28199E91CD00774C30 /* MCMainVC.xib in Resources */,
@@ -408,12 +470,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6929BF5199E8C8B00774C30 /* MCAppDelegate.m in Sources */,
+				F6C15FE819A26D8B0072977D /* MCView1Sect1.m in Sources */,
 				F6929C1C199E91C200774C30 /* MCAppModel.m in Sources */,
 				F6C15FCA199E9F990072977D /* MCNavigationExampleSection.m in Sources */,
 				F6929BF1199E8C8B00774C30 /* main.m in Sources */,
 				F6C15FD3199EA0470072977D /* MCNavigationView3.m in Sources */,
+				F6C15FFC19A3BB850072977D /* MCView2Sect1.m in Sources */,
+				F6C15FED19A26DA70072977D /* MCView1Sect2.m in Sources */,
+				F6C15FF219A270A20072977D /* MCTabBar.m in Sources */,
 				F6C15FCE199E9F990072977D /* MCNavigationView2.m in Sources */,
+				F6C15FE319A26D2C0072977D /* MCSection2.m in Sources */,
 				F6929C27199E91CD00774C30 /* MCMainVC.m in Sources */,
+				F6C15FDE19A26D140072977D /* MCSection1.m in Sources */,
 				F6C15FCC199E9F990072977D /* MCNavigationView1.m in Sources */,
 				F6C15FD8199EA0640072977D /* MCNavigationView4.m in Sources */,
 			);

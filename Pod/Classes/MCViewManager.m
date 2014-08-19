@@ -199,9 +199,14 @@
     
     else if (intent.stackRequestDescriptor && !intent.sectionName && !intent.viewName)
     {
-        NSAssert((_activityStackSize != 1), @"Stack size can not be disabled (=1) when trying to pop or push");
-        NSAssert((_activityStack.count > 1), @"Stack needs at least 2 Activies in stack (including current) when trying to pop or push");
-        
+#ifdef DEBUG
+        if (_activityStackSize == 1) {
+            NSLog(@"Stack size can not be disabled (=1) when trying to pop or push");
+        }
+        else if (_activityStack.count < 1) {
+        NSLog(@"Stack needs at least 2 Activies in stack (including current) when trying to pop or push");
+        }
+#endif
         // See if push of pop method wanted and call appropriate method.
         switch (intent.stackRequestDescriptor.requestType)
         {
